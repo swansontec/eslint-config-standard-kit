@@ -1,0 +1,12 @@
+[
+  {
+    "ruleId": "no-unused-vars",
+    "severity": 2,
+    "message": "'UnusedComponent' is defined but never used.",
+    "line": 8,
+    "column": 10,
+    "nodeType": "Identifier",
+    "endLine": 8,
+    "endColumn": 25
+  }
+]

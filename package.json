@@ -1,0 +1,48 @@
+{
+  "name": "eslint-config-standard-kit",
+  "version": "0.12.0",
+  "private": false,
+  "description": "Standard.js linting rules - broken into modular pieces",
+  "repository": "git://github.com/swansontec/eslint-config-standard-bits.git",
+  "license": "MIT",
+  "author": "William Swanson",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint scripts",
+    "lint:fix": "eslint --fix scripts",
+    "precommit": "npm run lint; npm test",
+    "prepare": "node ./scripts/generate-configs.js",
+    "test": "node ./scripts/test.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.6.0",
+    "@typescript-eslint/parser": "^1.6.0",
+    "babel-eslint": "^10.0.1",
+    "chai": "^4.2.0",
+    "disklet": "^0.4.1",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-config-standard-jsx": "^6.0.2",
+    "eslint-plugin-flow": "^2.29.1",
+    "eslint-plugin-flowtype": "^3.6.1",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-standard": "^4.0.0",
+    "husky": "^1.3.1",
+    "prettier": "^1.16.4",
+    "typescript": "^3.4.3"
+  }
+}

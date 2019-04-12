@@ -1,0 +1,12 @@
+[
+  {
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "severity": 2,
+    "message": "'y' is assigned a value but never used.",
+    "line": 9,
+    "column": 7,
+    "nodeType": "Identifier",
+    "endLine": 9,
+    "endColumn": 16
+  }
+]
