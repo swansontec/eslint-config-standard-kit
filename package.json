@@ -6,6 +6,17 @@
   "repository": "git://github.com/swansontec/eslint-config-standard-bits.git",
   "license": "MIT",
   "author": "William Swanson",
+  "files": [
+    "/CHANGELOG.md",
+    "/flow.js",
+    "/index.js",
+    "/jsx.js",
+    "/lint",
+    "/node.js",
+    "/package.json",
+    "/README.md",
+    "/typescript.js"
+  ],
   "main": "index.js",
   "scripts": {
     "lint": "eslint scripts",
