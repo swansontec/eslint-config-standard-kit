@@ -12,7 +12,7 @@ const sourceExt = /\.[jt]sx?$/
 const needsUpdate = process.argv.indexOf('--update') >= 0
 
 async function testFile(cli, codePath, jsonPath, hasJson) {
-  let expected = hasJson ? JSON.parse(await disklet.getText(jsonPath)) : []
+  const expected = hasJson ? JSON.parse(await disklet.getText(jsonPath)) : []
 
   const results = cli.executeOnFiles([codePath])
   const messages = results.results[0].messages
