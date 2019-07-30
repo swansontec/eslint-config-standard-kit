@@ -1,5 +1,11 @@
 # eslint-config-standard-kit
 
+## 0.12.2 (2019-07-30)
+
+- Bring more typescript rules in line with Standard.js:
+  - Remove `@typescript-eslint/explicit-member-accessibility`.
+  - Adjust `@typescript-eslint/no-use-before-define`.
+
 ## 0.12.1 (2019-04-24)
 
 - Add missing files to NPM package.
