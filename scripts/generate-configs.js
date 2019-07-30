@@ -67,6 +67,7 @@ writeConfigs({
           '@typescript-eslint/array-type',
           '@typescript-eslint/camelcase',
           '@typescript-eslint/explicit-function-return-type',
+          '@typescript-eslint/explicit-member-accessibility',
           '@typescript-eslint/no-inferrable-types'
         ]),
         '@typescript-eslint/indent': ['error', 2],
@@ -77,7 +78,11 @@ writeConfigs({
             singleline: { delimiter: 'comma', requireLast: false }
           }
         ],
-        '@typescript-eslint/no-unused-vars': ['error', { args: 'none' }]
+        '@typescript-eslint/no-unused-vars': ['error', { args: 'none' }],
+        '@typescript-eslint/no-use-before-define': [
+          'error',
+          { functions: false, classes: false, variables: false }
+        ]
       }
     }
   }
