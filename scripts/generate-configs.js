@@ -8,7 +8,11 @@ const flowPlugin = require('eslint-plugin-flow')
 const { removeProps, splitArray, splitObject } = require('./utils.js')
 const { writeConfigs } = require('./write-configs.js')
 
-const typescriptConfig = typescriptPlugin.configs.recommended
+const typescriptConfig = {
+  ...typescriptPlugin.configs.base,
+  ...typescriptPlugin.configs.recommended,
+  extends: void 0
+}
 const flowConfig = flowPlugin.configs.recommended
 
 /**
