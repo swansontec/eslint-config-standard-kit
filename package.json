@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-standard-kit",
-  "version": "0.12.2",
+  "version": "0.13.0",
   "private": false,
   "description": "Standard.js linting rules - broken into modular pieces",
   "repository": "git://github.com/swansontec/eslint-config-standard-bits.git",

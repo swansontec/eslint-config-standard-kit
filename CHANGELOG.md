@@ -1,5 +1,9 @@
 # eslint-config-standard-kit
 
+## 0.13.0 (2019-07-30)
+
+- Upgrade to Standard.js 13.
+
 ## 0.12.2 (2019-07-30)
 
 - Bring more typescript rules in line with Standard.js:
