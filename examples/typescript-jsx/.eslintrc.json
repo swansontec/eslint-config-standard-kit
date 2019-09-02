@@ -3,5 +3,8 @@
     "../../index.js",
     "../../jsx.js",
     "../../typescript.js"
-  ]
+  ],
+  "parserOptions": {
+    "project": "./examples/typescript-jsx/tsconfig.json"
+  }
 }
