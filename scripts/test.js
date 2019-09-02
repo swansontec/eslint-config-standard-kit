@@ -25,6 +25,7 @@ async function testFile(cli, codePath, jsonPath, hasJson) {
 }
 
 async function testFolder(path) {
+  let hadErrors = false
   const cli = new CLIEngine({
     useEslintrc: false,
     configFile: join(path, '.eslintrc.json')
@@ -39,16 +40,30 @@ async function testFolder(path) {
         console.log(`${path} passsed`)
       } catch (error) {
         console.log(`${path} failed with`, error)
+        hadErrors = true
       }
     }
   }
+
+  return hadErrors
 }
 
 async function runTests() {
+  let hadErrors = false
+
   const entries = await disklet.list('examples')
   for (const path in entries) {
-    if (entries[path] === 'folder') await testFolder(path)
+    if (entries[path] === 'folder') {
+      hadErrors = hadErrors || (await testFolder(path))
+    }
   }
+
+  return hadErrors
 }
 
-runTests().catch(e => console.error('unexpected failure', e))
+runTests().then(
+  hadErrors => {
+    if (hadErrors) process.exit(1)
+  },
+  e => console.error('unexpected failure', e)
+)
