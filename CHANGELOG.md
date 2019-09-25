@@ -1,5 +1,10 @@
 # eslint-config-standard-kit
 
+## 0.14.0 (2019-09-25)
+
+- Upgrade to Standard.js 14.
+- Base TypeScript support on `eslint-config-standard-with-typescript`.
+
 ## 0.13.0 (2019-07-30)
 
 - Upgrade to Standard.js 13.
