@@ -13,4 +13,4 @@ function MyComponent () {
   return <p>Hello, world!</p>
 }
 
-render(MyComponent, document.getElementById('body'))
+render(<MyComponent />, document.getElementById('body'))

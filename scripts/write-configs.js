@@ -1,29 +1,10 @@
-const { expect } = require('chai')
 const { makeNodeDisklet } = require('disklet')
 const { join } = require('path')
 const packageJson = require('../package.json')
 
-const { removeProps } = require('./utils.js')
+const { filterStyleRules } = require('./style-rules.js')
 
 const disklet = makeNodeDisklet(join(__dirname, '..'))
-
-// Prettier already has well-maintained lists of formatting rules:
-const prettierConfigs = [
-  require('eslint-config-prettier'),
-  require('eslint-config-prettier/@typescript-eslint'),
-  require('eslint-config-prettier/flowtype'),
-  require('eslint-config-prettier/react'),
-  require('eslint-config-prettier/standard')
-]
-
-// Merge the blacklists:
-const styleRules = []
-for (const config of prettierConfigs) {
-  for (const rule in config.rules) {
-    expect(config.rules[rule]).oneOf([0, 'off'])
-    styleRules.push(rule)
-  }
-}
 
 function stringifyConfig(comment, config) {
   return `// ${comment}
@@ -38,10 +19,7 @@ module.exports = ${JSON.stringify(config, null, 2)};
  * Writes out two copies of a config, one with format rules and one without.
  */
 function writeConfig(name, comment, config) {
-  const lintConfig = {
-    ...config,
-    rules: removeProps(config.rules, styleRules)
-  }
+  const lintConfig = filterStyleRules(config)
 
   disklet.setText(`${name}.js`, stringifyConfig(`${comment} rules`, config))
   disklet.setText(

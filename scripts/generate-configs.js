@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-const typescriptPlugin = require('@typescript-eslint/eslint-plugin')
 const standardConfig = require('eslint-config-standard')
 const jsxConfig = require('eslint-config-standard-jsx')
 const flowPlugin = require('eslint-plugin-flow')
@@ -8,11 +7,7 @@ const flowPlugin = require('eslint-plugin-flow')
 const { removeProps, splitArray, splitObject } = require('./utils.js')
 const { writeConfigs } = require('./write-configs.js')
 
-const typescriptConfig = {
-  ...typescriptPlugin.configs.base,
-  ...typescriptPlugin.configs.recommended,
-  extends: void 0
-}
+const typescriptConfig = require('eslint-config-standard-with-typescript')
 const flowConfig = flowPlugin.configs.recommended
 
 /**
@@ -63,31 +58,6 @@ writeConfigs({
 
   typescript: {
     comment: 'Typescript language support',
-    config: {
-      ...typescriptConfig,
-      rules: {
-        // We use a looser version of the Typescript recommended rules:
-        ...removeProps(typescriptConfig.rules, [
-          '@typescript-eslint/array-type',
-          '@typescript-eslint/camelcase',
-          '@typescript-eslint/explicit-function-return-type',
-          '@typescript-eslint/explicit-member-accessibility',
-          '@typescript-eslint/no-inferrable-types'
-        ]),
-        '@typescript-eslint/indent': ['error', 2],
-        '@typescript-eslint/member-delimiter-style': [
-          'error',
-          {
-            multiline: { delimiter: 'none' },
-            singleline: { delimiter: 'comma', requireLast: false }
-          }
-        ],
-        '@typescript-eslint/no-unused-vars': ['error', { args: 'none' }],
-        '@typescript-eslint/no-use-before-define': [
-          'error',
-          { functions: false, classes: false, variables: false }
-        ]
-      }
-    }
+    config: removeProps(typescriptConfig, 'extends')
   }
 })
