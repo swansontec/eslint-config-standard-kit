@@ -1,5 +1,9 @@
 # eslint-config-standard-kit
 
+## 0.14.1 (2019-09-30)
+
+- Only use the TypeScript parser for `.ts` and `.tsx` files, which allows TypeScript and Flow to coexist in the same project now.
+
 ## 0.14.0 (2019-09-25)
 
 - Upgrade to Standard.js 14.
