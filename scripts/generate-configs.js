@@ -2,12 +2,12 @@
 
 const standardConfig = require('eslint-config-standard')
 const jsxConfig = require('eslint-config-standard-jsx')
+const typescriptConfig = require('eslint-config-standard-with-typescript')
 const flowPlugin = require('eslint-plugin-flow')
 
 const { removeProps, splitArray, splitObject } = require('./utils.js')
 const { writeConfigs } = require('./write-configs.js')
 
-const typescriptConfig = require('eslint-config-standard-with-typescript')
 const flowConfig = flowPlugin.configs.recommended
 
 /**
@@ -58,6 +58,14 @@ writeConfigs({
 
   typescript: {
     comment: 'Typescript language support',
-    config: removeProps(typescriptConfig, 'extends')
+    config: {
+      ...removeProps(typescriptConfig, ['extends', 'parser']),
+      overrides: [
+        {
+          parser: '@typescript-eslint/parser',
+          ...typescriptConfig.overrides[0]
+        }
+      ]
+    }
   }
 })
