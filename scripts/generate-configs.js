@@ -21,55 +21,69 @@ const splitNodeEnv = splitObject(standardConfig.env, isNode)
 const splitNodePlugins = splitArray(standardConfig.plugins, isNode)
 const splitNodeRules = splitObject(standardConfig.rules, isNode)
 
+// ----------------------------------------------------------------
 // Write the files:
+// ----------------------------------------------------------------
+
 writeConfigs({
-  index: {
-    comment: 'Standard.js basic',
-    config: {
-      ...standardConfig,
-      env: splitNodeEnv.no,
-      globals: {
-        clearInterval: 'readonly',
-        clearTimeout: 'readonly',
-        console: 'readonly',
-        setInterval: 'readonly',
-        setTimeout: 'readonly',
-        ...standardConfig.globals
-      },
-      plugins: splitNodePlugins.no,
-      rules: splitNodeRules.no
-    }
-  },
+  filename: 'index.js',
+  comment: 'Core rules for Standard.js',
+  upstream: 'eslint-config-standard',
+  config: {
+    ...standardConfig,
+    env: splitNodeEnv.no,
+    globals: {
+      clearInterval: 'readonly',
+      clearTimeout: 'readonly',
+      console: 'readonly',
+      setInterval: 'readonly',
+      setTimeout: 'readonly',
+      ...standardConfig.globals
+    },
+    plugins: splitNodePlugins.no,
+    rules: splitNodeRules.no
+  }
+})
 
-  node: {
-    comment: 'Standard.js Node.js',
-    config: {
-      env: splitNodeEnv.yes,
-      plugins: splitNodePlugins.yes,
-      rules: splitNodeRules.yes
-    }
-  },
+writeConfigs({
+  name: 'node',
+  comment: 'Node.js support',
+  upstream: 'eslint-config-standard',
+  config: {
+    env: splitNodeEnv.yes,
+    plugins: splitNodePlugins.yes,
+    rules: splitNodeRules.yes
+  }
+})
 
-  jsx: {
-    comment: 'Standard.js JSX',
-    config: jsxConfig
-  },
+writeConfigs({
+  name: 'jsx',
+  comment: 'JSX support',
+  upstream: 'eslint-config-standard-jsx',
+  config: jsxConfig
+})
 
-  flow: {
-    comment: 'Flow language support',
-    config: { plugins: ['flowtype'], ...flowConfig }
-  },
+writeConfigs({
+  name: 'flow',
+  comment: 'Flow language support',
+  upstream: 'eslint-plugin-flow',
+  config: {
+    plugins: ['flowtype'],
+    ...flowConfig
+  }
+})
 
-  typescript: {
-    comment: 'Typescript language support',
-    config: {
-      ...removeProps(typescriptConfig, ['extends', 'parser']),
-      overrides: [
-        {
-          parser: '@typescript-eslint/parser',
-          ...typescriptConfig.overrides[0]
-        }
-      ]
-    }
+writeConfigs({
+  name: 'typescript',
+  comment: 'Typescript language support',
+  upstream: 'eslint-config-standard-with-typescript',
+  config: {
+    ...removeProps(typescriptConfig, ['extends', 'parser']),
+    overrides: [
+      {
+        parser: '@typescript-eslint/parser',
+        ...typescriptConfig.overrides[0]
+      }
+    ]
   }
 })
