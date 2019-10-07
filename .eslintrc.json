@@ -1,14 +1,12 @@
 {
   "extends": [
-    "./lint/index.js",
-    "./lint/node.js"
+    "./prettier/index.js",
+    "./prettier/node.js"
   ],
   "plugins": [
-    "prettier",
     "simple-import-sort"
   ],
   "rules": {
-    "prettier/prettier": "error",
     "simple-import-sort/sort": "error"
   }
 }

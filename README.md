@@ -10,7 +10,7 @@ This package makes it easy to integrate Standard.js with these other tools by br
 - `standard-kit/typescript` - [TypeScript](https://typescriptlang.org) language support
 - `standard-kit/flow` - [Flow](https://flow.org/) language support
 
-If you use a tool like Prettier to format your source code, just prefix the rule names with `standard-kit/lint` instead of `standard-kit`. This will remove all formatting rules, leaving just the code-quality rules.
+If you would like to use [Prettier](https://prettier.io/) to format your source code instead of Standard.js, just prefix the configuration names with `standard-kit/prettier` instead of `standard-kit`.
 
 ## Easy Setup
 
@@ -40,6 +40,9 @@ Depending on which configurations you enable, you will need to add several other
 - flow:
   - `babel-eslint`
   - `eslint-plugin-flowtype`
+- prettier:
+  - `eslint-plugin-prettier`
+  - `prettier`
 
 Finally, edit your ESLint configuration file to enable your selected rules, as shown in the example below:
 

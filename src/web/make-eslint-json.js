@@ -1,20 +1,12 @@
 import { sortObject } from '../utils.js'
 
 export function makeEslintJson(input) {
-  const standardKit = input.prettier ? 'standard-kit/lint' : 'standard-kit'
+  const standardKit = input.prettier ? 'standard-kit/prettier' : 'standard-kit'
   const eslintJson = {
     extends: [standardKit],
     parserOptions: {},
     plugins: [],
     rules: {}
-  }
-
-  if (input.prettier) {
-    eslintJson.plugins.push('prettier')
-    eslintJson.rules['prettier/prettier'] = [
-      'error',
-      { semi: false, singleQuote: true }
-    ]
   }
 
   if (input.node) {

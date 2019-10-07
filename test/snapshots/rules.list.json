@@ -8,5 +8,10 @@
   "lint/node.js",
   "lint/typescript.js",
   "node.js",
+  "prettier/flow.js",
+  "prettier/index.js",
+  "prettier/jsx.js",
+  "prettier/node.js",
+  "prettier/typescript.js",
   "typescript.js"
 ]
