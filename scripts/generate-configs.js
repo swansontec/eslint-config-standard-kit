@@ -29,7 +29,11 @@ writeConfigs({
       ...standardConfig,
       env: splitNodeEnv.no,
       globals: {
+        clearInterval: 'readonly',
+        clearTimeout: 'readonly',
         console: 'readonly',
+        setInterval: 'readonly',
+        setTimeout: 'readonly',
         ...standardConfig.globals
       },
       plugins: splitNodePlugins.no,
