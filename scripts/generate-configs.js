@@ -26,7 +26,7 @@ const splitNodeRules = splitObject(standardConfig.rules, isNode)
 // ----------------------------------------------------------------
 
 writeConfigs({
-  filename: 'index.js',
+  name: 'index',
   comment: 'Core rules for Standard.js',
   upstream: 'eslint-config-standard',
   config: {
