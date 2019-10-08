@@ -1,5 +1,10 @@
 # eslint-config-standard-kit
 
+## 0.14.2 (2019-10-07)
+
+- Include `setTimeout` & friends in the core list of globals.
+- Update the readme & generated files to give credit to the upstream rule sets.
+
 ## 0.14.1 (2019-09-30)
 
 - Only use the TypeScript parser for `.ts` and `.tsx` files, which allows TypeScript and Flow to coexist in the same project now.
