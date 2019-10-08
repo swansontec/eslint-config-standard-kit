@@ -64,8 +64,6 @@ The TypeScript rules also need to know where your `tsconfig.json` file is locate
 
 ## Rules
 
-This package auto-generate its configuration files based on the official [eslint-config-standard](https://github.com/standard/eslint-config-standard) and [eslint-config-standard-jsx](https://github.com/standard/eslint-config-standard-jsx) packages. This means you are getting the exact same rules as the official Standard.js project, just filtered into smaller files.
-
-Typescript support comes from the [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint) recommended settings, but with a few adjustments to be more in line with what Standard.js does (like using 2-space indents instead of 4).
+This package auto-generate its configuration files based on the official [eslint-config-standard](https://github.com/standard/eslint-config-standard), [eslint-config-standard-jsx](https://github.com/standard/eslint-config-standard-jsx), and [eslint-config-standard-with-typescript](https://github.com/standard/eslint-config-standard-with-typescript) packages. This means you are getting the exact same rules as the official Standard.js project, just combined & filtered into a more convenient format.
 
 Flow support uses the recommended settings from [eslint-plugin-flowtype](https://github.com/gajus/eslint-plugin-flowtype).
