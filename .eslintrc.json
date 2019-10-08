@@ -4,9 +4,11 @@
     "./lint/node.js"
   ],
   "plugins": [
-    "prettier"
+    "prettier",
+    "simple-import-sort"
   ],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "simple-import-sort/sort": "error"
   }
 }
