@@ -1,7 +1,7 @@
 {
   "extends": [
-    "../lint/index.js",
-    "../lint/node.js"
+    "./lint/index.js",
+    "./lint/node.js"
   ],
   "plugins": [
     "prettier"

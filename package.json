@@ -19,11 +19,11 @@
   ],
   "main": "index.js",
   "scripts": {
-    "lint": "eslint scripts",
-    "lint:fix": "eslint --fix scripts",
-    "precommit": "npm run lint; npm test",
+    "fix": "npm run lint -- --fix",
+    "lint": "eslint .",
+    "precommit": "npm run lint && npm test",
     "prepare": "node ./scripts/generate-configs.js",
-    "test": "tsc --noEmit -p examples/typescript && tsc --noEmit -p examples/typescript-jsx && node ./scripts/test.js"
+    "test": "node ./scripts/test.js && tsc"
   },
   "husky": {
     "hooks": {

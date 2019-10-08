@@ -26,10 +26,7 @@ async function testFile(cli, codePath, jsonPath, hasJson) {
 
 async function testFolder(path) {
   let hadErrors = false
-  const cli = new CLIEngine({
-    useEslintrc: false,
-    configFile: join(path, '.eslintrc.json')
-  })
+  const cli = new CLIEngine({ ignore: false })
 
   const entries = await disklet.list(path)
   for (const path in entries) {

@@ -5,6 +5,7 @@
     "../../typescript.js"
   ],
   "parserOptions": {
-    "project": "./examples/typescript-jsx/tsconfig.json"
-  }
+    "project": "tsconfig.json"
+  },
+  "root": true
 }
