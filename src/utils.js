@@ -10,6 +10,19 @@ export function removeProps(object, list) {
 }
 
 /**
+ * Makes a copy of an object, sorting its keys.
+ */
+export function sortObject(object) {
+  const out = {}
+  Object.keys(object)
+    .sort()
+    .forEach(function(key) {
+      out[key] = object[key]
+    })
+  return out
+}
+
+/**
  * Splits an array in two based on the provided test.
  */
 export function splitArray(array, test) {

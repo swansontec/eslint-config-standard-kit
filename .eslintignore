@@ -7,4 +7,5 @@
 /jsx.js
 /lint/
 /node.js
+/public/*.js
 /typescript.js

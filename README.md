@@ -1,6 +1,6 @@
 # eslint-config-standard-kit
 
-[Standard.js](https://standardjs.com) is a _fantastic_ collection of linter rules, but it difficult to integrate with other code-quality tools like [Prettier](https://prettier.io/), [TypeScript](https://typescriptlang.org), or [Flow](https://flow.org/).
+[Standard.js](https://standardjs.com) is a _fantastic_ collection of linter rules, but it can be difficult to integrate with other code-quality tools like Prettier, TypeScript, or Flow.
 
 This package makes it easy to integrate Standard.js with these other tools by breaking its configuration into modular pieces. Just mix & match the bits you need for your particular setup:
 
@@ -12,22 +12,11 @@ This package makes it easy to integrate Standard.js with these other tools by br
 
 If you use a tool like Prettier to format your source code, just prefix the rule names with `standard-kit/lint` instead of `standard-kit`. This will remove all formatting rules, leaving just the code-quality rules.
 
-For example, here is an `.eslintrc.json` that supports Prettier, JSX, and Typescript:
+## Easy Setup
 
-```json
-{
-  "extends": [
-    "standard-kit/lint",
-    "standard-kit/lint/jsx",
-    "standard-kit/lint/typescript"
-  ],
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  }
-}
-```
+Use the [configuration web page](https://www.swansontec.com/eslint-config-standard-kit/) to generate your`.eslintrc.json` file and list of dependencies for `package.json`.
 
-## Usage
+## Manual Setup
 
 First, add `eslint-plugin-standard-kit` as one of your project's `devDependencies`:
 
@@ -52,7 +41,20 @@ Depending on which configurations you enable, you will need to add several other
   - `babel-eslint`
   - `eslint-plugin-flowtype`
 
-Finally, edit your ESLint configuration file to enable your selected rules, as shown in the example above.
+Finally, edit your ESLint configuration file to enable your selected rules, as shown in the example below:
+
+```json
+{
+  "extends": [
+    "standard-kit",
+    "standard-kit/jsx",
+    "standard-kit/typescript"
+  ],
+  "parserOptions": {
+    "project": "tsconfig.json"
+  }
+}
+```
 
 If you are using JSX or Typescript, you may want to pass the [`--ext`](https://eslint.org/docs/user-guide/command-line-interface#--ext) option to ESlint to tell it about the `.jsx` or `.ts` file extensions:
 
