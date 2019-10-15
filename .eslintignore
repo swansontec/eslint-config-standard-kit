@@ -1,0 +1,10 @@
+# These files have intentional errors:
+/examples/
+
+# Generated sources:
+/flow.js
+/index.js
+/jsx.js
+/lint/
+/node.js
+/typescript.js

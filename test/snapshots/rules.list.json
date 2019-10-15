@@ -1,0 +1,12 @@
+[
+  "flow.js",
+  "index.js",
+  "jsx.js",
+  "lint/flow.js",
+  "lint/index.js",
+  "lint/jsx.js",
+  "lint/node.js",
+  "lint/typescript.js",
+  "node.js",
+  "typescript.js"
+]
