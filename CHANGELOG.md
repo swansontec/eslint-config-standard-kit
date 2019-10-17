@@ -1,5 +1,9 @@
 # eslint-config-standard-kit
 
+## 0.14.4 (2019-10-17)
+
+- Fix the NPM package to include the newly-added files.
+
 ## 0.14.3 (2019-10-17)
 
 - Add a web page to help generate configurations for new projects.
