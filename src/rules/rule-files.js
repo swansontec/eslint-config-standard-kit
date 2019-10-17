@@ -43,6 +43,13 @@ async function makeFilePair(out, name, info) {
     upstream,
     config: filterStyleRules(config)
   })
+
+  // Make `prettier` version:
+  out[`prettier/${name}.js`] = makeFile({
+    comment: `${comment} for Standard.js + Prettier`,
+    upstream,
+    config: filterStyleRules(config)
+  })
 }
 
 /**
@@ -55,22 +62,44 @@ function makeFiles() {
   const splitNodePlugins = splitArray(standardConfig.plugins, isNode)
   const splitNodeRules = splitObject(standardConfig.rules, isNode)
 
-  makeFilePair(out, 'index', {
-    comment: 'Core rules',
+  const coreConfig = {
+    ...standardConfig,
+    env: splitNodeEnv.no,
+    globals: {
+      clearInterval: 'readonly',
+      clearTimeout: 'readonly',
+      console: 'readonly',
+      setInterval: 'readonly',
+      setTimeout: 'readonly',
+      ...standardConfig.globals
+    },
+    plugins: splitNodePlugins.no,
+    rules: splitNodeRules.no
+  }
+  const coreLintConfig = filterStyleRules(coreConfig)
+
+  out['index.js'] = makeFile({
+    comment: 'Core rules for Standard.js',
+    upstream: 'eslint-config-standard',
+    config: coreConfig
+  })
+
+  out['lint/index.js'] = makeFile({
+    comment: 'Core rules for Standard.js (without style rules)',
+    upstream: 'eslint-config-standard',
+    config: coreLintConfig
+  })
+
+  out['prettier/index.js'] = makeFile({
+    comment: 'Core rules for Standard.js + Prettier',
     upstream: 'eslint-config-standard',
     config: {
-      ...standardConfig,
-      env: splitNodeEnv.no,
-      globals: {
-        clearInterval: 'readonly',
-        clearTimeout: 'readonly',
-        console: 'readonly',
-        setInterval: 'readonly',
-        setTimeout: 'readonly',
-        ...standardConfig.globals
-      },
-      plugins: splitNodePlugins.no,
-      rules: splitNodeRules.no
+      ...coreLintConfig,
+      plugins: [...coreLintConfig.plugins, 'prettier'],
+      rules: {
+        ...coreLintConfig.rules,
+        'prettier/prettier': ['error', { semi: false, singleQuote: true }]
+      }
     }
   })
 

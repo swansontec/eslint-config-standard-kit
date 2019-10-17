@@ -4,6 +4,8 @@
 /jsx.js
 /lint/
 /node.js
+/prettier/
+/public/*.js
 /typescript.js
 
 # Package managers:

@@ -22,7 +22,7 @@
     "fix": "npm run lint -- --fix",
     "lint": "eslint .",
     "precommit": "npm run lint && npm test",
-    "prepare": "node ./src/rules/build.js",
+    "prepare": "rollup -c && node ./src/rules/build.js",
     "test": "mocha -r esm ./test/**/*.test.js && tsc",
     "test-update": "rm test/snapshots/*; UPDATE=1 npm test"
   },
@@ -62,6 +62,7 @@
     "husky": "^3.0.5",
     "mocha": "^6.2.1",
     "prettier": "^1.18.2",
+    "rollup": "^1.23.1",
     "typescript": "3.5.3"
   }
 }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>eslint-config-standard-kit</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <section>
+      <h1>
+        <a href="https://github.com/swansontec/eslint-config-standard-kit"
+          >eslint-config-standard-kit</a
+        >
+      </h1>
+      <p>
+        Just select the language features you need, and this page will show you
+        how to configure ESLint. The rules are based on the popular Standard.js
+        style guide.
+      </p>
+      <fieldset>
+        <legend>Language features</legend>
+        <label> <input id="node" type="checkbox" /> Node.js & CommonJS support </label>
+        <label> <input id="jsx" type="checkbox" /> JSX language support </label>
+        <label>
+          <input id="typescript" type="checkbox" /> Typescript language support
+        </label>
+        <label>
+          <input id="flow" type="checkbox" /> Flow language support
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Formatting</legend>
+        <label>
+          <input id="standard" name="formatter" type="radio" checked />
+          Standard.js formatting
+        </label>
+        <label>
+          <input id="prettier" name="formatter" type="radio" /> Prettier
+          formatting
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Extras</legend>
+        <label><input id="git" type="checkbox" /> Git integration</label>
+        <label><input id="sort" type="checkbox" /> Sort imports</label>
+      </fieldset>
+    </section>
+
+    <section>
+      <h2>.eslintrc.json</h2>
+      <pre id="eslint-json">{...}</pre>
+      <button id="copy-eslint">⤷ Copy .eslintrc.json</button>
+    </section>
+
+    <section>
+      <h2>package.json</h2>
+      <pre id="package-json">{...}</pre>
+      <button id="copy-package">⤷ Copy package.json</button>
+    </section>
+
+    <script src="./update-dom.js"></script>
+  </body>
+</html>
