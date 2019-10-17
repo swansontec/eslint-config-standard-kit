@@ -1,5 +1,11 @@
 # eslint-config-standard-kit
 
+## 0.14.3 (2019-10-17)
+
+- Add a web page to help generate configurations for new projects.
+- Add a set of `standard-kit/prettier` rules with Prettier pre-integrated.
+- Deprecate the `standard-kit/lint` rules.
+
 ## 0.14.2 (2019-10-07)
 
 - Include `setTimeout` & friends in the core list of globals.

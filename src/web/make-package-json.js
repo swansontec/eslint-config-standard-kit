@@ -3,7 +3,7 @@ import { sortObject } from '../utils.js'
 export function makePackageJson(input) {
   const devDependencies = {
     eslint: '>=6.2.2',
-    'eslint-config-standard-kit': '>=0.14.2',
+    'eslint-config-standard-kit': '>=0.14.3',
     'eslint-plugin-import': '>=2.18.0',
     'eslint-plugin-promise': '>=4.2.1',
     'eslint-plugin-standard': '>=4.0.0'
