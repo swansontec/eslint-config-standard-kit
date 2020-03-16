@@ -9,10 +9,6 @@ export function makeEslintJson(input) {
     rules: {}
   }
 
-  if (input.node) {
-    eslintJson.extends.push(standardKit + '/node')
-  }
-
   if (input.jsx) {
     eslintJson.extends.push(standardKit + '/jsx')
   }
@@ -24,6 +20,14 @@ export function makeEslintJson(input) {
   if (input.typescript) {
     eslintJson.extends.push(standardKit + '/typescript')
     eslintJson.parserOptions.project = 'tsconfig.json'
+  }
+
+  if (input.node) {
+    eslintJson.extends.push(standardKit + '/node')
+  }
+
+  if (input.react) {
+    eslintJson.extends.push(standardKit + '/react')
   }
 
   if (input.sort) {

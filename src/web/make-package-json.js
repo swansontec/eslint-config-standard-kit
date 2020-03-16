@@ -9,18 +9,7 @@ export function makePackageJson(input) {
     'eslint-plugin-promise': our.devDependencies['eslint-plugin-promise']
   }
 
-  if (input.prettier) {
-    devDependencies['eslint-plugin-prettier'] =
-      our.devDependencies['eslint-plugin-prettier']
-    devDependencies.prettier = our.devDependencies.prettier
-  }
-
-  if (input.node) {
-    devDependencies['eslint-plugin-node'] =
-      our.devDependencies['eslint-plugin-node']
-  }
-
-  if (input.jsx) {
+  if (input.jsx || input.react) {
     devDependencies['eslint-plugin-react'] =
       our.devDependencies['eslint-plugin-react']
   }
@@ -37,6 +26,22 @@ export function makePackageJson(input) {
     devDependencies['@typescript-eslint/parser'] =
       our.devDependencies['@typescript-eslint/parser']
     devDependencies.typescript = our.devDependencies.typescript
+  }
+
+  if (input.node) {
+    devDependencies['eslint-plugin-node'] =
+      our.devDependencies['eslint-plugin-node']
+  }
+
+  if (input.react) {
+    devDependencies['eslint-plugin-react-hooks'] =
+      our.devDependencies['eslint-plugin-react-hooks']
+  }
+
+  if (input.prettier) {
+    devDependencies['eslint-plugin-prettier'] =
+      our.devDependencies['eslint-plugin-prettier']
+    devDependencies.prettier = our.devDependencies.prettier
   }
 
   if (input.sort) {

@@ -1,7 +1,9 @@
 import standardConfig from 'eslint-config-standard'
 import jsxConfig from 'eslint-config-standard-jsx'
+import reactConfig from 'eslint-config-standard-react'
 import typescriptConfig from 'eslint-config-standard-with-typescript'
 import flowPlugin from 'eslint-plugin-flow'
+import reactHooksPlugin from 'eslint-plugin-react-hooks'
 
 import packageJson from '../../package.json'
 import { removeProps, sortJson, splitArray, splitObject } from '../utils.js'
@@ -111,16 +113,6 @@ function makeFiles() {
     }
   })
 
-  makeFilePair(out, 'node', {
-    comment: 'Node.js support',
-    upstream: 'eslint-config-standard',
-    config: {
-      env: splitNodeEnv.yes,
-      plugins: splitNodePlugins.yes,
-      rules: splitNodeRules.yes
-    }
-  })
-
   makeFilePair(out, 'jsx', {
     comment: 'JSX support',
     upstream: 'eslint-config-standard-jsx',
@@ -147,6 +139,29 @@ function makeFiles() {
     config: {
       ...removeProps(typescriptConfig, ['extends']),
       overrides: typescriptConfig.overrides
+    }
+  })
+
+  makeFilePair(out, 'node', {
+    comment: 'Node.js support',
+    upstream: 'eslint-config-standard',
+    config: {
+      env: splitNodeEnv.yes,
+      plugins: splitNodePlugins.yes,
+      rules: splitNodeRules.yes
+    }
+  })
+
+  makeFilePair(out, 'react', {
+    comment: 'React support',
+    upstream: 'eslint-config-standard-react',
+    config: {
+      ...reactConfig,
+      plugins: [...reactConfig.plugins, 'eslint-plugin-react-hooks'],
+      rules: {
+        ...reactConfig.rules,
+        ...reactHooksPlugin.configs.recommended.rules
+      }
     }
   })
 

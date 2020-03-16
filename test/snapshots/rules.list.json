@@ -6,12 +6,15 @@
   "lint/index.js",
   "lint/jsx.js",
   "lint/node.js",
+  "lint/react.js",
   "lint/typescript.js",
   "node.js",
   "prettier/flow.js",
   "prettier/index.js",
   "prettier/jsx.js",
   "prettier/node.js",
+  "prettier/react.js",
   "prettier/typescript.js",
+  "react.js",
   "typescript.js"
 ]
