@@ -7,7 +7,7 @@
 
 module.exports = {
   "env": {
-    "es6": true
+    "es2021": true
   },
   "globals": {
     "clearInterval": "readonly",
@@ -23,24 +23,41 @@ module.exports = {
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 2020,
+    "ecmaVersion": 2021,
     "sourceType": "module"
   },
   "plugins": [
     "import",
     "promise",
-    "standard",
     "prettier"
   ],
   "rules": {
-    "accessor-pairs": "error",
+    "accessor-pairs": [
+      "error",
+      {
+        "enforceForClassMembers": true,
+        "setWithoutGet": true
+      }
+    ],
+    "array-callback-return": [
+      "error",
+      {
+        "allowImplicit": false,
+        "checkForEach": false
+      }
+    ],
     "camelcase": [
       "error",
       {
+        "allow": [
+          "^UNSAFE_"
+        ],
+        "ignoreGlobals": true,
         "properties": "never"
       }
     ],
     "constructor-super": "error",
+    "default-case-last": "error",
     "dot-notation": [
       "error",
       {
@@ -53,10 +70,6 @@ module.exports = {
       {
         "null": "ignore"
       }
-    ],
-    "handle-callback-err": [
-      "error",
-      "^(err|error)$"
     ],
     "import/export": "error",
     "import/first": "error",
@@ -107,6 +120,12 @@ module.exports = {
     "no-dupe-class-members": "error",
     "no-dupe-keys": "error",
     "no-duplicate-case": "error",
+    "no-empty": [
+      "error",
+      {
+        "allowEmptyCatch": true
+      }
+    ],
     "no-empty-character-class": "error",
     "no-empty-pattern": "error",
     "no-eval": "error",
@@ -118,10 +137,7 @@ module.exports = {
     "no-func-assign": "error",
     "no-global-assign": "error",
     "no-implied-eval": "error",
-    "no-inner-declarations": [
-      "error",
-      "functions"
-    ],
+    "no-import-assign": "error",
     "no-invalid-regexp": "error",
     "no-irregular-whitespace": "error",
     "no-iterator": "error",
@@ -133,19 +149,17 @@ module.exports = {
       }
     ],
     "no-lone-blocks": "error",
+    "no-loss-of-precision": "error",
     "no-misleading-character-class": "error",
     "no-multi-str": "error",
-    "no-negated-in-lhs": "error",
     "no-new": "error",
     "no-new-func": "error",
     "no-new-object": "error",
-    "no-new-require": "error",
     "no-new-symbol": "error",
     "no-new-wrappers": "error",
     "no-obj-calls": "error",
     "no-octal": "error",
     "no-octal-escape": "error",
-    "no-path-concat": "error",
     "no-proto": "error",
     "no-prototype-builtins": "error",
     "no-redeclare": [
@@ -159,7 +173,6 @@ module.exports = {
       "error",
       "except-parens"
     ],
-    "no-return-await": "error",
     "no-self-assign": [
       "error",
       {
@@ -183,6 +196,7 @@ module.exports = {
       }
     ],
     "no-unreachable": "error",
+    "no-unreachable-loop": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-negation": "error",
     "no-unused-expressions": [
@@ -197,6 +211,7 @@ module.exports = {
       "error",
       {
         "args": "none",
+        "caughtErrors": "none",
         "ignoreRestSiblings": true,
         "vars": "all"
       }
@@ -209,6 +224,7 @@ module.exports = {
         "variables": false
       }
     ],
+    "no-useless-backreference": "error",
     "no-useless-call": "error",
     "no-useless-catch": "error",
     "no-useless-computed-key": "error",
@@ -216,6 +232,7 @@ module.exports = {
     "no-useless-escape": "error",
     "no-useless-rename": "error",
     "no-useless-return": "error",
+    "no-var": "warn",
     "no-void": "error",
     "no-with": "error",
     "one-var": [
@@ -231,6 +248,12 @@ module.exports = {
       }
     ],
     "prefer-promise-reject-errors": "error",
+    "prefer-regex-literals": [
+      "error",
+      {
+        "disallowRedundantWrapping": true
+      }
+    ],
     "prettier/prettier": [
       "error",
       {
@@ -268,9 +291,14 @@ module.exports = {
         }
       }
     ],
-    "standard/no-callback-literal": "error",
     "symbol-description": "error",
-    "use-isnan": "error",
+    "use-isnan": [
+      "error",
+      {
+        "enforceForIndexOf": true,
+        "enforceForSwitchCase": true
+      }
+    ],
     "valid-typeof": [
       "error",
       {

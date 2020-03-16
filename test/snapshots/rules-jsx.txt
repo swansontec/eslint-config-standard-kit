@@ -10,7 +10,7 @@ module.exports = {
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 2020,
+    "ecmaVersion": 2021,
     "sourceType": "module"
   },
   "plugins": [
@@ -70,7 +70,7 @@ module.exports = {
       "error",
       2,
       {
-        "checkAttributes": true,
+        "checkAttributes": false,
         "indentLogicalExpressions": true
       }
     ],
@@ -78,7 +78,12 @@ module.exports = {
       "error",
       2
     ],
-    "react/jsx-key": "error",
+    "react/jsx-key": [
+      "error",
+      {
+        "checkFragmentShorthand": true
+      }
+    ],
     "react/jsx-no-comment-textnodes": "error",
     "react/jsx-no-duplicate-props": "error",
     "react/jsx-no-target-blank": [
@@ -87,7 +92,12 @@ module.exports = {
         "enforceDynamicLinks": "always"
       }
     ],
-    "react/jsx-no-undef": "error",
+    "react/jsx-no-undef": [
+      "error",
+      {
+        "allowGlobals": true
+      }
+    ],
     "react/jsx-pascal-case": [
       "error",
       {
@@ -106,6 +116,49 @@ module.exports = {
     ],
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
+    "react/jsx-wrap-multilines": [
+      "error",
+      {
+        "arrow": "ignore",
+        "assignment": "parens-new-line",
+        "condition": "ignore",
+        "declaration": "parens-new-line",
+        "logical": "ignore",
+        "prop": "ignore",
+        "return": "parens-new-line"
+      }
+    ],
+    "react/no-children-prop": "error",
+    "react/no-danger-with-children": "error",
+    "react/no-deprecated": "error",
+    "react/no-direct-mutation-state": "error",
+    "react/no-find-dom-node": "error",
+    "react/no-is-mounted": "error",
+    "react/no-render-return-value": "error",
+    "react/no-string-refs": [
+      "error",
+      {
+        "noTemplateLiterals": true
+      }
+    ],
+    "react/no-unescaped-entities": [
+      "error",
+      {
+        "forbid": [
+          ">",
+          "}"
+        ]
+      }
+    ],
+    "react/require-render-return": "error",
     "react/self-closing-comp": "error"
+  },
+  "settings": {
+    "linkComponents": [
+      "Link"
+    ],
+    "react": {
+      "version": "17"
+    }
   }
 };

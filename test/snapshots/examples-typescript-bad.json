@@ -5,8 +5,31 @@
     "endLine": 7,
     "line": 7,
     "message": "'y' is assigned a value but never used.",
+    "messageId": "unusedVar",
     "nodeType": "Identifier",
     "ruleId": "@typescript-eslint/no-unused-vars",
+    "severity": 2
+  },
+  {
+    "column": 22,
+    "endColumn": 23,
+    "endLine": 9,
+    "line": 9,
+    "message": "'x will evaluate to '[object Object]' when stringified.",
+    "messageId": "baseToString",
+    "nodeType": "Identifier",
+    "ruleId": "@typescript-eslint/no-base-to-string",
+    "severity": 2
+  },
+  {
+    "column": 22,
+    "endColumn": 23,
+    "endLine": 9,
+    "line": 9,
+    "message": "Invalid type \"SomeObject\" of template literal expression.",
+    "messageId": "invalidType",
+    "nodeType": "Identifier",
+    "ruleId": "@typescript-eslint/restrict-template-expressions",
     "severity": 2
   }
 ]

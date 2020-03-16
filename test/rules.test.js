@@ -3,15 +3,15 @@
 import { ruleFiles } from '../src/rules/rule-files.js'
 import { checkJsonSnapshot, checkTextSnapshot } from './snapshot.js'
 
-describe('rules', function() {
+describe('rules', function () {
   const filenames = Object.keys(ruleFiles).sort()
 
-  it('matches file list', function() {
+  it('matches file list', function () {
     checkJsonSnapshot('rules.list', filenames)
   })
 
   filenames.forEach(filename =>
-    it(filename, function() {
+    it(filename, function () {
       const snapshot =
         'rules-' + filename.replace('/', '-').replace(/\.js$/, '')
 

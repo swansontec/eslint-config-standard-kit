@@ -15,7 +15,7 @@ const ids = [
 
 function setup() {
   document.getElementById('version').textContent = `v${our.version}`
-  ids.forEach(function(id) {
+  ids.forEach(function (id) {
     document.getElementById(id).addEventListener('input', update)
   })
   document
@@ -28,7 +28,7 @@ function setup() {
 
 function update() {
   const input = {}
-  ids.forEach(function(id) {
+  ids.forEach(function (id) {
     input[id] = document.getElementById(id).checked
   })
 
