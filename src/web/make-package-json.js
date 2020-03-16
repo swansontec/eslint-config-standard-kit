@@ -28,8 +28,9 @@ export function makePackageJson(input) {
   }
 
   if (input.typescript) {
-    devDependencies['@typescript-eslint/eslint-plugin'] = '>=2.0.0'
-    devDependencies['@typescript-eslint/parser'] = '^2.0.0'
+    devDependencies['@typescript-eslint/eslint-plugin'] = '>=2.22.0'
+    devDependencies['@typescript-eslint/parser'] = '>=2.22.0'
+    devDependencies.typescript = '>=3.0.0'
   }
 
   if (input.sort) {
