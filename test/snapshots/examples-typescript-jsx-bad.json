@@ -1,34 +1,34 @@
 [
   {
-    "ruleId": "@typescript-eslint/explicit-function-return-type",
-    "severity": 2,
-    "message": "Missing return type on function.",
-    "line": 8,
     "column": 1,
-    "nodeType": "FunctionDeclaration",
-    "messageId": "missingReturnType",
+    "endColumn": 40,
     "endLine": 8,
-    "endColumn": 40
+    "line": 8,
+    "message": "Missing return type on function.",
+    "messageId": "missingReturnType",
+    "nodeType": "FunctionDeclaration",
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "severity": 2
   },
   {
-    "ruleId": "@typescript-eslint/no-unused-vars",
-    "severity": 2,
-    "message": "'UnusedComponent' is defined but never used.",
-    "line": 8,
     "column": 10,
-    "nodeType": "Identifier",
+    "endColumn": 25,
     "endLine": 8,
-    "endColumn": 25
+    "line": 8,
+    "message": "'UnusedComponent' is defined but never used.",
+    "nodeType": "Identifier",
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "severity": 2
   },
   {
-    "ruleId": "@typescript-eslint/explicit-function-return-type",
-    "severity": 2,
-    "message": "Missing return type on function.",
-    "line": 12,
     "column": 1,
-    "nodeType": "FunctionDeclaration",
-    "messageId": "missingReturnType",
+    "endColumn": 24,
     "endLine": 12,
-    "endColumn": 24
+    "line": 12,
+    "message": "Missing return type on function.",
+    "messageId": "missingReturnType",
+    "nodeType": "FunctionDeclaration",
+    "ruleId": "@typescript-eslint/explicit-function-return-type",
+    "severity": 2
   }
 ]

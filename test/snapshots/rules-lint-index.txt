@@ -6,31 +6,31 @@
 "use strict";
 
 module.exports = {
+  "env": {
+    "es6": true
+  },
+  "globals": {
+    "clearInterval": "readonly",
+    "clearTimeout": "readonly",
+    "console": "readonly",
+    "document": "readonly",
+    "navigator": "readonly",
+    "setInterval": "readonly",
+    "setTimeout": "readonly",
+    "window": "readonly"
+  },
   "parserOptions": {
-    "ecmaVersion": 2020,
     "ecmaFeatures": {
       "jsx": true
     },
+    "ecmaVersion": 2020,
     "sourceType": "module"
-  },
-  "env": {
-    "es6": true
   },
   "plugins": [
     "import",
     "promise",
     "standard"
   ],
-  "globals": {
-    "clearInterval": "readonly",
-    "clearTimeout": "readonly",
-    "console": "readonly",
-    "setInterval": "readonly",
-    "setTimeout": "readonly",
-    "document": "readonly",
-    "navigator": "readonly",
-    "window": "readonly"
-  },
   "rules": {
     "accessor-pairs": "error",
     "camelcase": [
@@ -57,6 +57,19 @@ module.exports = {
       "error",
       "^(err|error)$"
     ],
+    "import/export": "error",
+    "import/first": "error",
+    "import/no-absolute-path": [
+      "error",
+      {
+        "amd": false,
+        "commonjs": true,
+        "esmodule": true
+      }
+    ],
+    "import/no-duplicates": "error",
+    "import/no-named-default": "error",
+    "import/no-webpack-loader-syntax": "error",
     "lines-between-class-members": [
       "error",
       "always",
@@ -67,8 +80,8 @@ module.exports = {
     "new-cap": [
       "error",
       {
-        "newIsCap": true,
         "capIsNew": false,
+        "newIsCap": true,
         "properties": true
       }
     ],
@@ -120,8 +133,6 @@ module.exports = {
     ],
     "no-lone-blocks": "error",
     "no-misleading-character-class": "error",
-    "no-prototype-builtins": "error",
-    "no-useless-catch": "error",
     "no-multi-str": "error",
     "no-negated-in-lhs": "error",
     "no-new": "error",
@@ -135,6 +146,7 @@ module.exports = {
     "no-octal-escape": "error",
     "no-path-concat": "error",
     "no-proto": "error",
+    "no-prototype-builtins": "error",
     "no-redeclare": [
       "error",
       {
@@ -176,27 +188,28 @@ module.exports = {
       "error",
       {
         "allowShortCircuit": true,
-        "allowTernary": true,
-        "allowTaggedTemplates": true
+        "allowTaggedTemplates": true,
+        "allowTernary": true
       }
     ],
     "no-unused-vars": [
       "error",
       {
-        "vars": "all",
         "args": "none",
-        "ignoreRestSiblings": true
+        "ignoreRestSiblings": true,
+        "vars": "all"
       }
     ],
     "no-use-before-define": [
       "error",
       {
-        "functions": false,
         "classes": false,
+        "functions": false,
         "variables": false
       }
     ],
     "no-useless-call": "error",
+    "no-useless-catch": "error",
     "no-useless-computed-key": "error",
     "no-useless-constructor": "error",
     "no-useless-escape": "error",
@@ -217,10 +230,25 @@ module.exports = {
       }
     ],
     "prefer-promise-reject-errors": "error",
+    "promise/param-names": "error",
     "spaced-comment": [
       "error",
       "always",
       {
+        "block": {
+          "balanced": true,
+          "exceptions": [
+            "*"
+          ],
+          "markers": [
+            "*package",
+            "!",
+            ",",
+            ":",
+            "::",
+            "flow-include"
+          ]
+        },
         "line": {
           "markers": [
             "*package",
@@ -229,23 +257,10 @@ module.exports = {
             ",",
             "="
           ]
-        },
-        "block": {
-          "balanced": true,
-          "markers": [
-            "*package",
-            "!",
-            ",",
-            ":",
-            "::",
-            "flow-include"
-          ],
-          "exceptions": [
-            "*"
-          ]
         }
       }
     ],
+    "standard/no-callback-literal": "error",
     "symbol-description": "error",
     "use-isnan": "error",
     "valid-typeof": [
@@ -257,21 +272,6 @@ module.exports = {
     "yoda": [
       "error",
       "never"
-    ],
-    "import/export": "error",
-    "import/first": "error",
-    "import/no-absolute-path": [
-      "error",
-      {
-        "esmodule": true,
-        "commonjs": true,
-        "amd": false
-      }
-    ],
-    "import/no-duplicates": "error",
-    "import/no-named-default": "error",
-    "import/no-webpack-loader-syntax": "error",
-    "promise/param-names": "error",
-    "standard/no-callback-literal": "error"
+    ]
   }
 };

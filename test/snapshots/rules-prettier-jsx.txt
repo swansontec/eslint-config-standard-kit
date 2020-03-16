@@ -7,10 +7,10 @@
 
 module.exports = {
   "parserOptions": {
-    "ecmaVersion": 2020,
     "ecmaFeatures": {
       "jsx": true
     },
+    "ecmaVersion": 2020,
     "sourceType": "module"
   },
   "plugins": [
@@ -21,8 +21,8 @@ module.exports = {
     "react/jsx-curly-brace-presence": [
       "error",
       {
-        "props": "never",
-        "children": "never"
+        "children": "never",
+        "props": "never"
       }
     ],
     "react/jsx-fragments": [

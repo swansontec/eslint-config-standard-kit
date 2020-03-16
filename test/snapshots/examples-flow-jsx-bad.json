@@ -1,12 +1,12 @@
 [
   {
-    "ruleId": "no-unused-vars",
-    "severity": 2,
-    "message": "'UnusedComponent' is defined but never used.",
-    "line": 8,
     "column": 10,
-    "nodeType": "Identifier",
+    "endColumn": 25,
     "endLine": 8,
-    "endColumn": 25
+    "line": 8,
+    "message": "'UnusedComponent' is defined but never used.",
+    "nodeType": "Identifier",
+    "ruleId": "no-unused-vars",
+    "severity": 2
   }
 ]

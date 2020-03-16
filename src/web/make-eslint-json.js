@@ -1,4 +1,4 @@
-import { sortObject } from '../utils.js'
+import { sortJson } from '../utils'
 
 export function makeEslintJson(input) {
   const standardKit = input.prettier ? 'standard-kit/prettier' : 'standard-kit'
@@ -42,7 +42,7 @@ export function makeEslintJson(input) {
     out.plugins = eslintJson.plugins
   }
   if (Object.keys(eslintJson.rules).length > 0) {
-    out.rules = sortObject(eslintJson.rules)
+    out.rules = sortJson(eslintJson.rules)
   }
   return out
 }

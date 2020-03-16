@@ -6,10 +6,10 @@
 "use strict";
 
 module.exports = {
+  "parser": "babel-eslint",
   "plugins": [
     "flowtype"
   ],
-  "parser": "babel-eslint",
   "rules": {
     "flowtype/define-flow-type": 1,
     "flowtype/no-weak-types": 0,

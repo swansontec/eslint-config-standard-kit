@@ -4,7 +4,7 @@ import typescriptConfig from 'eslint-config-standard-with-typescript'
 import flowPlugin from 'eslint-plugin-flow'
 
 import packageJson from '../../package.json'
-import { removeProps, splitArray, splitObject } from '../utils.js'
+import { removeProps, sortJson, splitArray, splitObject } from '../utils.js'
 import { filterStyleRules } from './style-rules.js'
 
 /**
@@ -20,7 +20,7 @@ function makeFile(info) {
     '\n' +
     '"use strict";\n' +
     '\n' +
-    `module.exports = ${JSON.stringify(config, null, 2)};\n`
+    `module.exports = ${JSON.stringify(sortJson(config), null, 2)};\n`
   )
 }
 

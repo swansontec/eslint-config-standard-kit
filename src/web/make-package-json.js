@@ -1,4 +1,4 @@
-import { sortObject } from '../utils.js'
+import { sortJson } from '../utils'
 
 export function makePackageJson(input) {
   const devDependencies = {
@@ -69,7 +69,7 @@ export function makePackageJson(input) {
         : `*.${extensions[0]}`
     packageJson['lint-staged'] = { [glob]: 'eslint' }
   }
-  packageJson.devDependencies = sortObject(devDependencies)
+  packageJson.devDependencies = sortJson(devDependencies)
 
   return packageJson
 }

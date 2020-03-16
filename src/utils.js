@@ -10,15 +10,29 @@ export function removeProps(object, list) {
 }
 
 /**
- * Makes a copy of an object, sorting its keys.
+ * Copies a JSON tree, sorting its object keys.
  */
-export function sortObject(object) {
+export function sortJson(json) {
+  // Avoid basic types:
+  if (typeof json !== 'object' || json == null) {
+    return json
+  }
+
+  // Recurse into arrays:
+  if (Array.isArray(json)) {
+    const out = []
+    for (let i = 0; i < json.length; ++i) {
+      out[i] = sortJson(json[i])
+    }
+    return out
+  }
+
+  // Sort object keys:
   const out = {}
-  Object.keys(object)
-    .sort()
-    .forEach(function(key) {
-      out[key] = object[key]
-    })
+  const keys = Object.keys(json).sort()
+  for (const key of keys) {
+    out[key] = sortJson(json[key])
+  }
   return out
 }
 

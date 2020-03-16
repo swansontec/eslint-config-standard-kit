@@ -7,10 +7,10 @@
 
 module.exports = {
   "parserOptions": {
-    "ecmaVersion": 2020,
     "ecmaFeatures": {
       "jsx": true
     },
+    "ecmaVersion": 2020,
     "sourceType": "module"
   },
   "plugins": [
@@ -30,8 +30,8 @@ module.exports = {
     "react/jsx-curly-brace-presence": [
       "error",
       {
-        "props": "never",
-        "children": "never"
+        "children": "never",
+        "props": "never"
       }
     ],
     "react/jsx-curly-newline": [
@@ -44,13 +44,13 @@ module.exports = {
     "react/jsx-curly-spacing": [
       "error",
       {
+        "allowMultiline": true,
         "attributes": {
           "when": "never"
         },
         "children": {
           "when": "never"
-        },
-        "allowMultiline": true
+        }
       }
     ],
     "react/jsx-equals-spacing": [
@@ -98,10 +98,10 @@ module.exports = {
     "react/jsx-tag-spacing": [
       "error",
       {
-        "closingSlash": "never",
-        "beforeSelfClosing": "always",
         "afterOpening": "never",
-        "beforeClosing": "never"
+        "beforeClosing": "never",
+        "beforeSelfClosing": "always",
+        "closingSlash": "never"
       }
     ],
     "react/jsx-uses-react": "error",
