@@ -52,6 +52,7 @@ export function makePackageJson(input) {
 
   const packageJson = {
     scripts: {
+      fix: 'npm run lint -- --fix',
       lint:
         extensions.length > 1
           ? `eslint --ext ${extensions.map(ext => `.${ext}`).join(',')} .`
