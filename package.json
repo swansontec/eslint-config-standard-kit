@@ -32,10 +32,6 @@
       "pre-commit": "npm run precommit"
     }
   },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
-  },
   "devDependencies": {
     "@rollup/plugin-json": "^4.1.0",
     "@types/node": "^12.7.3",
