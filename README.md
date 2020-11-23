@@ -29,7 +29,6 @@ Depending on which configurations you enable, you will need to add several other
 - basic rules:
   - `eslint-plugin-import`
   - `eslint-plugin-promise`
-  - `eslint-plugin-standard`
 - node:
   - `eslint-plugin-node`
 - jsx:

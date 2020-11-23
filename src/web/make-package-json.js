@@ -6,8 +6,7 @@ export function makePackageJson(input) {
     eslint: our.devDependencies.eslint,
     'eslint-config-standard-kit': our.version,
     'eslint-plugin-import': our.devDependencies['eslint-plugin-import'],
-    'eslint-plugin-promise': our.devDependencies['eslint-plugin-promise'],
-    'eslint-plugin-standard': our.devDependencies['eslint-plugin-standard']
+    'eslint-plugin-promise': our.devDependencies['eslint-plugin-promise']
   }
 
   if (input.prettier) {
