@@ -11,6 +11,14 @@ module.exports = {
     "flowtype"
   ],
   "rules": {
+    "flowtype/array-style-complex-type": [
+      "error",
+      "verbose"
+    ],
+    "flowtype/array-style-simple-type": [
+      "error",
+      "shorthand"
+    ],
     "flowtype/boolean-style": [
       2,
       "boolean"

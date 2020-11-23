@@ -98,7 +98,15 @@ function makeFiles() {
       plugins: [...coreLintConfig.plugins, 'prettier'],
       rules: {
         ...coreLintConfig.rules,
-        'prettier/prettier': ['error', { semi: false, singleQuote: true }]
+        'prettier/prettier': [
+          'error',
+          {
+            arrowParens: 'avoid',
+            semi: false,
+            singleQuote: true,
+            trailingComma: 'none'
+          }
+        ]
       }
     }
   })
@@ -124,7 +132,12 @@ function makeFiles() {
     upstream: 'eslint-plugin-flow',
     config: {
       plugins: ['flowtype'],
-      ...flowPlugin.configs.recommended
+      ...flowPlugin.configs.recommended,
+      rules: {
+        ...flowPlugin.configs.recommended.rules,
+        'flowtype/array-style-complex-type': ['error', 'verbose'],
+        'flowtype/array-style-simple-type': ['error', 'shorthand']
+      }
     }
   })
 
@@ -132,13 +145,8 @@ function makeFiles() {
     comment: 'Typescript language support',
     upstream: 'eslint-config-standard-with-typescript',
     config: {
-      ...removeProps(typescriptConfig, ['extends', 'parser']),
-      overrides: [
-        {
-          parser: '@typescript-eslint/parser',
-          ...typescriptConfig.overrides[0]
-        }
-      ]
+      ...removeProps(typescriptConfig, ['extends']),
+      overrides: typescriptConfig.overrides
     }
   })
 
