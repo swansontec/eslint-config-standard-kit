@@ -1,45 +1,53 @@
+import our from '../../package.json'
 import { sortJson } from '../utils'
 
 export function makePackageJson(input) {
   const devDependencies = {
-    eslint: '>=6.2.2',
-    'eslint-config-standard-kit': '>=0.14.4',
-    'eslint-plugin-import': '>=2.18.0',
-    'eslint-plugin-promise': '>=4.2.1',
-    'eslint-plugin-standard': '>=4.0.0'
+    eslint: our.devDependencies.eslint,
+    'eslint-config-standard-kit': our.version,
+    'eslint-plugin-import': our.devDependencies['eslint-plugin-import'],
+    'eslint-plugin-promise': our.devDependencies['eslint-plugin-promise'],
+    'eslint-plugin-standard': our.devDependencies['eslint-plugin-standard']
   }
 
   if (input.prettier) {
-    devDependencies['eslint-plugin-prettier'] = '>=3.0.0'
-    devDependencies.prettier = '>=1.0.0'
+    devDependencies['eslint-plugin-prettier'] =
+      our.devDependencies['eslint-plugin-prettier']
+    devDependencies.prettier = our.devDependencies.prettier
   }
 
   if (input.node) {
-    devDependencies['eslint-plugin-node'] = '>=9.1.0'
+    devDependencies['eslint-plugin-node'] =
+      our.devDependencies['eslint-plugin-node']
   }
 
   if (input.jsx) {
-    devDependencies['eslint-plugin-react'] = '>=7.14.2'
+    devDependencies['eslint-plugin-react'] =
+      our.devDependencies['eslint-plugin-react']
   }
 
   if (input.flow) {
-    devDependencies['babel-eslint'] = '>=10.0.0'
-    devDependencies['eslint-plugin-flowtype'] = '>=4.3.0'
+    devDependencies['babel-eslint'] = our.devDependencies['babel-eslint']
+    devDependencies['eslint-plugin-flowtype'] =
+      our.devDependencies['eslint-plugin-flowtype']
   }
 
   if (input.typescript) {
-    devDependencies['@typescript-eslint/eslint-plugin'] = '>=2.22.0'
-    devDependencies['@typescript-eslint/parser'] = '>=2.22.0'
-    devDependencies.typescript = '>=3.0.0'
+    devDependencies['@typescript-eslint/eslint-plugin'] =
+      our.devDependencies['@typescript-eslint/eslint-plugin']
+    devDependencies['@typescript-eslint/parser'] =
+      our.devDependencies['@typescript-eslint/parser']
+    devDependencies.typescript = our.devDependencies.typescript
   }
 
   if (input.sort) {
-    devDependencies['eslint-plugin-simple-import-sort'] = '>=4.0.0'
+    devDependencies['eslint-plugin-simple-import-sort'] =
+      our.devDependencies['eslint-plugin-simple-import-sort']
   }
 
   if (input.git) {
-    devDependencies.husky = '>=3.0.0'
-    devDependencies['lint-staged'] = '>=9.0.0'
+    devDependencies.husky = our.devDependencies.husky
+    devDependencies['lint-staged'] = our.devDependencies['lint-staged']
   }
 
   const extensions = input.typescript
