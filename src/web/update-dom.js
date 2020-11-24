@@ -1,3 +1,4 @@
+import our from '../../package.json'
 import { makeEslintJson } from './make-eslint-json.js'
 import { makePackageJson } from './make-package-json.js'
 
@@ -13,6 +14,7 @@ const ids = [
 ]
 
 function setup() {
+  document.getElementById('version').textContent = `v${our.version}`
   ids.forEach(function(id) {
     document.getElementById(id).addEventListener('input', update)
   })

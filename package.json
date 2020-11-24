@@ -3,7 +3,7 @@
   "version": "0.14.4",
   "private": false,
   "description": "Standard.js linting rules - broken into modular pieces",
-  "repository": "git://github.com/swansontec/eslint-config-standard-bits.git",
+  "repository": "git://github.com/swansontec/eslint-config-standard-kit.git",
   "license": "MIT",
   "author": "William Swanson",
   "files": [
@@ -32,11 +32,8 @@
       "pre-commit": "npm run precommit"
     }
   },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
-  },
   "devDependencies": {
+    "@rollup/plugin-json": "^4.1.0",
     "@types/node": "^12.7.3",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",

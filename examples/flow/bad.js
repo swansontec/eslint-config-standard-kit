@@ -1,5 +1,7 @@
+// @flow
+
 // React is used, but without the JSX rules, we can't see that:
-import React from 'react'
+import * as React from 'react'
 import { render } from 'react-dom'
 
 type Props = {

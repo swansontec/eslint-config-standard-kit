@@ -55,6 +55,10 @@ h1 {
 h2 {
   font-size: 1.19em;
 }
+#version {
+  font-size: 0.75em;
+  color: #b8d0e8;
+}
 
 /* Buttons */
 

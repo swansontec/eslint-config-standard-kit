@@ -1,10 +1,10 @@
-interface SomeObject {
+export interface SomeObject {
   x: number
   y: string
 }
 const x: SomeObject = { x: 1, y: 'text' }
 
-function someFunction (param): number {
+function someFunction (param: SomeObject): number {
   console.log(param)
   return 1
 }

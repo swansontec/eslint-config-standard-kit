@@ -1,9 +1,9 @@
 [
   {
-    "column": 8,
-    "endColumn": 13,
-    "endLine": 2,
-    "line": 2,
+    "column": 13,
+    "endColumn": 18,
+    "endLine": 4,
+    "line": 4,
     "message": "'React' is defined but never used.",
     "nodeType": "Identifier",
     "ruleId": "no-unused-vars",
@@ -12,8 +12,8 @@
   {
     "column": 10,
     "endColumn": 24,
-    "endLine": 9,
-    "line": 9,
+    "endLine": 11,
+    "line": 11,
     "message": "'InnerComponent' is defined but never used.",
     "nodeType": "Identifier",
     "ruleId": "no-unused-vars",
