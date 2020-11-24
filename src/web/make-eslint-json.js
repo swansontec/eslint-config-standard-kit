@@ -28,7 +28,7 @@ export function makeEslintJson(input) {
 
   if (input.sort) {
     eslintJson.plugins.push('simple-import-sort')
-    eslintJson.rules['simple-import-sort/sort'] = 'error'
+    eslintJson.rules['simple-import-sort/imports'] = 'error'
   }
 
   // Filter unused sections:

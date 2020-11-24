@@ -49,21 +49,10 @@ export function makePackageJson(input) {
     devDependencies['lint-staged'] = '^9.0.0'
   }
 
-  const extensions = input.typescript
-    ? input.jsx
-      ? ['js', 'jsx', 'ts', 'tsx']
-      : ['js', 'ts']
-    : input.jsx
-    ? ['js', 'jsx']
-    : ['js']
-
   const packageJson = {
     scripts: {
       fix: 'npm run lint -- --fix',
-      lint:
-        extensions.length > 1
-          ? `eslint --ext ${extensions.map(ext => `.${ext}`).join(',')} .`
-          : 'eslint .'
+      lint: 'eslint .'
     }
   }
   if (input.git) {
@@ -72,6 +61,13 @@ export function makePackageJson(input) {
         'pre-commit': 'lint-staged'
       }
     }
+    const extensions = input.jsx
+      ? input.typescript
+        ? ['js', 'jsx', 'ts', 'tsx']
+        : ['js', 'jsx']
+      : input.typescript
+      ? ['js', 'ts']
+      : ['js']
     const glob =
       extensions.length > 1
         ? `*.{${extensions.join(',')}}`
