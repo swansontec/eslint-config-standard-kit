@@ -1,5 +1,16 @@
 # eslint-config-standard-kit
 
+## 0.14.5 (2020-11-24)
+
+- Update documentation.
+- Improve unit-testing & other internal code-quality tooling.
+- Update the configuration web page:
+  - Require compatible dependency versions (using `^`) in the generated `package.json`.
+  - Add a `fix` script to the generated `package.json`.
+  - Add a `typescript` dependency when necessary.
+  - Show the current `eslint-config-standard-kit` version number.
+  - Add a visual shadow the the buttons.
+
 ## 0.14.4 (2019-10-17)
 
 - Fix the NPM package to include the newly-added files.
