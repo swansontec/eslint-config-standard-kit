@@ -51,7 +51,7 @@ export function makePackageJson(input) {
 
   if (input.git) {
     devDependencies.husky = our.devDependencies.husky
-    devDependencies['lint-staged'] = '^9.0.0'
+    devDependencies['lint-staged'] = our.devDependencies['lint-staged']
   }
 
   const packageJson = {
