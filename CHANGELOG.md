@@ -1,5 +1,9 @@
 # eslint-config-standard-kit
 
+## 0.14.6 (2020-12-09)
+
+- web: Fix the missing `lint-staged` dependency in the generated output.
+
 ## 0.14.5 (2020-11-24)
 
 - Update documentation.
