@@ -5,6 +5,7 @@
     "endLine": 4,
     "line": 4,
     "message": "'React' is defined but never used.",
+    "messageId": "unusedVar",
     "nodeType": "Identifier",
     "ruleId": "no-unused-vars",
     "severity": 2
@@ -15,6 +16,7 @@
     "endLine": 11,
     "line": 11,
     "message": "'InnerComponent' is defined but never used.",
+    "messageId": "unusedVar",
     "nodeType": "Identifier",
     "ruleId": "no-unused-vars",
     "severity": 2

@@ -5,10 +5,13 @@
 This package makes it easy to integrate Standard.js with these other tools by breaking its configuration into modular pieces. Just mix & match the bits you need for your particular setup:
 
 - `standard-kit` - Basic Standard.js rules
-- `standard-kit/node` - [Node.js](https://nodejs.org/) runtime support, including CommonJS features like `require`
-- `standard-kit/jsx` - [JSX](https://reactjs.org/docs/introducing-jsx.html) language support
-- `standard-kit/typescript` - [TypeScript](https://typescriptlang.org) language support
-- `standard-kit/flow` - [Flow](https://flow.org/) language support
+- Language dialects:
+  - `standard-kit/jsx` - [JSX](https://reactjs.org/docs/introducing-jsx.html) language support
+  - `standard-kit/typescript` - [TypeScript](https://typescriptlang.org) language support
+  - `standard-kit/flow` - [Flow](https://flow.org/) language support
+- Runtimes:
+  - `standard-kit/node` - [Node.js](https://nodejs.org/) runtime support, including CommonJS features like `require`
+  - `standard-kit/react` - [React](https://reactjs.org) runtime support
 
 If you would like to use [Prettier](https://prettier.io/) to format your source code instead of Standard.js, just prefix the configuration names with `standard-kit/prettier` instead of `standard-kit`.
 
@@ -29,9 +32,6 @@ Depending on which configurations you enable, you will need to add several other
 - basic rules:
   - `eslint-plugin-import`
   - `eslint-plugin-promise`
-  - `eslint-plugin-standard`
-- node:
-  - `eslint-plugin-node`
 - jsx:
   - `eslint-plugin-react`
 - typescript:
@@ -40,6 +40,11 @@ Depending on which configurations you enable, you will need to add several other
 - flow:
   - `babel-eslint`
   - `eslint-plugin-flowtype`
+- node:
+  - `eslint-plugin-node`
+- react:
+  - `eslint-plugin-react`
+  - `eslint-plugin-react-hooks`
 - prettier:
   - `eslint-plugin-prettier`
   - `prettier`

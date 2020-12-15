@@ -6,22 +6,10 @@ export function makePackageJson(input) {
     eslint: our.devDependencies.eslint,
     'eslint-config-standard-kit': our.version,
     'eslint-plugin-import': our.devDependencies['eslint-plugin-import'],
-    'eslint-plugin-promise': our.devDependencies['eslint-plugin-promise'],
-    'eslint-plugin-standard': our.devDependencies['eslint-plugin-standard']
+    'eslint-plugin-promise': our.devDependencies['eslint-plugin-promise']
   }
 
-  if (input.prettier) {
-    devDependencies['eslint-plugin-prettier'] =
-      our.devDependencies['eslint-plugin-prettier']
-    devDependencies.prettier = our.devDependencies.prettier
-  }
-
-  if (input.node) {
-    devDependencies['eslint-plugin-node'] =
-      our.devDependencies['eslint-plugin-node']
-  }
-
-  if (input.jsx) {
+  if (input.jsx || input.react) {
     devDependencies['eslint-plugin-react'] =
       our.devDependencies['eslint-plugin-react']
   }
@@ -40,6 +28,22 @@ export function makePackageJson(input) {
     devDependencies.typescript = our.devDependencies.typescript
   }
 
+  if (input.node) {
+    devDependencies['eslint-plugin-node'] =
+      our.devDependencies['eslint-plugin-node']
+  }
+
+  if (input.react) {
+    devDependencies['eslint-plugin-react-hooks'] =
+      our.devDependencies['eslint-plugin-react-hooks']
+  }
+
+  if (input.prettier) {
+    devDependencies['eslint-plugin-prettier'] =
+      our.devDependencies['eslint-plugin-prettier']
+    devDependencies.prettier = our.devDependencies.prettier
+  }
+
   if (input.sort) {
     devDependencies['eslint-plugin-simple-import-sort'] =
       our.devDependencies['eslint-plugin-simple-import-sort']
@@ -50,21 +54,10 @@ export function makePackageJson(input) {
     devDependencies['lint-staged'] = '^9.0.0'
   }
 
-  const extensions = input.typescript
-    ? input.jsx
-      ? ['js', 'jsx', 'ts', 'tsx']
-      : ['js', 'ts']
-    : input.jsx
-    ? ['js', 'jsx']
-    : ['js']
-
   const packageJson = {
     scripts: {
       fix: 'npm run lint -- --fix',
-      lint:
-        extensions.length > 1
-          ? `eslint --ext ${extensions.map(ext => `.${ext}`).join(',')} .`
-          : 'eslint .'
+      lint: 'eslint .'
     }
   }
   if (input.git) {
@@ -73,6 +66,13 @@ export function makePackageJson(input) {
         'pre-commit': 'lint-staged'
       }
     }
+    const extensions = input.jsx
+      ? input.typescript
+        ? ['js', 'jsx', 'ts', 'tsx']
+        : ['js', 'jsx']
+      : input.typescript
+      ? ['js', 'ts']
+      : ['js']
     const glob =
       extensions.length > 1
         ? `*.{${extensions.join(',')}}`

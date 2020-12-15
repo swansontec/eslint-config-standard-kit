@@ -7,7 +7,7 @@ import { resolve } from 'path'
 
 import { checkJsonSnapshot } from './snapshot.js'
 
-describe('examples', function() {
+describe('examples', function () {
   const cli = new CLIEngine({ ignore: false })
   const examplesDir = resolve(__dirname, '../examples')
   const examples = [
@@ -22,7 +22,7 @@ describe('examples', function() {
   ]
   const sourceExt = /\.[jt]sx?$/
 
-  it('matches file list', async function() {
+  it('matches file list', async function () {
     const disklet = makeNodeDisklet(examplesDir)
     const list = await deepList(disklet)
     const files = Object.keys(list).filter(
@@ -32,7 +32,7 @@ describe('examples', function() {
   })
 
   examples.forEach(example =>
-    it(example, function() {
+    it(example, function () {
       this.timeout(4000)
       const snapshot =
         'examples-' + example.replace('/', '-').replace(sourceExt, '')

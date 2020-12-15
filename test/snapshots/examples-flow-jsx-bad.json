@@ -5,6 +5,7 @@
     "endLine": 10,
     "line": 10,
     "message": "'UnusedComponent' is defined but never used.",
+    "messageId": "unusedVar",
     "nodeType": "Identifier",
     "ruleId": "no-unused-vars",
     "severity": 2

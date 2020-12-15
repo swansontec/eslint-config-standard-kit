@@ -16,6 +16,7 @@
     "endLine": 8,
     "line": 8,
     "message": "'UnusedComponent' is defined but never used.",
+    "messageId": "unusedVar",
     "nodeType": "Identifier",
     "ruleId": "@typescript-eslint/no-unused-vars",
     "severity": 2
@@ -25,8 +26,8 @@
     "endColumn": 19,
     "endLine": 9,
     "line": 9,
-    "message": "Unexpected non-boolean in conditional.",
-    "messageId": "strictBooleanExpression",
+    "message": "Unexpected nullable boolean value in conditional. Please handle the nullish case explicitly.",
+    "messageId": "conditionErrorNullableBoolean",
     "nodeType": "MemberExpression",
     "ruleId": "@typescript-eslint/strict-boolean-expressions",
     "severity": 2

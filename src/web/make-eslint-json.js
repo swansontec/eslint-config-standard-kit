@@ -9,10 +9,6 @@ export function makeEslintJson(input) {
     rules: {}
   }
 
-  if (input.node) {
-    eslintJson.extends.push(standardKit + '/node')
-  }
-
   if (input.jsx) {
     eslintJson.extends.push(standardKit + '/jsx')
   }
@@ -26,9 +22,17 @@ export function makeEslintJson(input) {
     eslintJson.parserOptions.project = 'tsconfig.json'
   }
 
+  if (input.node) {
+    eslintJson.extends.push(standardKit + '/node')
+  }
+
+  if (input.react) {
+    eslintJson.extends.push(standardKit + '/react')
+  }
+
   if (input.sort) {
     eslintJson.plugins.push('simple-import-sort')
-    eslintJson.rules['simple-import-sort/sort'] = 'error'
+    eslintJson.rules['simple-import-sort/imports'] = 'error'
   }
 
   // Filter unused sections:

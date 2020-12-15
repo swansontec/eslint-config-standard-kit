@@ -1,7 +1,9 @@
 import standardConfig from 'eslint-config-standard'
 import jsxConfig from 'eslint-config-standard-jsx'
+import reactConfig from 'eslint-config-standard-react'
 import typescriptConfig from 'eslint-config-standard-with-typescript'
 import flowPlugin from 'eslint-plugin-flow'
+import reactHooksPlugin from 'eslint-plugin-react-hooks'
 
 import packageJson from '../../package.json'
 import { removeProps, sortJson, splitArray, splitObject } from '../utils.js'
@@ -98,18 +100,16 @@ function makeFiles() {
       plugins: [...coreLintConfig.plugins, 'prettier'],
       rules: {
         ...coreLintConfig.rules,
-        'prettier/prettier': ['error', { semi: false, singleQuote: true }]
+        'prettier/prettier': [
+          'error',
+          {
+            arrowParens: 'avoid',
+            semi: false,
+            singleQuote: true,
+            trailingComma: 'none'
+          }
+        ]
       }
-    }
-  })
-
-  makeFilePair(out, 'node', {
-    comment: 'Node.js support',
-    upstream: 'eslint-config-standard',
-    config: {
-      env: splitNodeEnv.yes,
-      plugins: splitNodePlugins.yes,
-      rules: splitNodeRules.yes
     }
   })
 
@@ -124,7 +124,12 @@ function makeFiles() {
     upstream: 'eslint-plugin-flow',
     config: {
       plugins: ['flowtype'],
-      ...flowPlugin.configs.recommended
+      ...flowPlugin.configs.recommended,
+      rules: {
+        ...flowPlugin.configs.recommended.rules,
+        'flowtype/array-style-complex-type': ['error', 'verbose'],
+        'flowtype/array-style-simple-type': ['error', 'shorthand']
+      }
     }
   })
 
@@ -132,13 +137,31 @@ function makeFiles() {
     comment: 'Typescript language support',
     upstream: 'eslint-config-standard-with-typescript',
     config: {
-      ...removeProps(typescriptConfig, ['extends', 'parser']),
-      overrides: [
-        {
-          parser: '@typescript-eslint/parser',
-          ...typescriptConfig.overrides[0]
-        }
-      ]
+      ...removeProps(typescriptConfig, ['extends']),
+      overrides: typescriptConfig.overrides
+    }
+  })
+
+  makeFilePair(out, 'node', {
+    comment: 'Node.js support',
+    upstream: 'eslint-config-standard',
+    config: {
+      env: splitNodeEnv.yes,
+      plugins: splitNodePlugins.yes,
+      rules: splitNodeRules.yes
+    }
+  })
+
+  makeFilePair(out, 'react', {
+    comment: 'React support',
+    upstream: 'eslint-config-standard-react',
+    config: {
+      ...reactConfig,
+      plugins: [...reactConfig.plugins, 'eslint-plugin-react-hooks'],
+      rules: {
+        ...reactConfig.rules,
+        ...reactHooksPlugin.configs.recommended.rules
+      }
     }
   })
 
