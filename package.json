@@ -48,7 +48,6 @@
     "eslint-config-standard-jsx": "^10.0.0",
     "eslint-config-standard-react": "^11.0.1",
     "eslint-config-standard-with-typescript": "^19.0.1",
-    "eslint-plugin-flow": "^2.29.1",
     "eslint-plugin-flowtype": "^5.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
