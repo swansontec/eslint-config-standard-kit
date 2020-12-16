@@ -1,5 +1,10 @@
 # eslint-config-standard-kit
 
+## 0.15.1 (2020-12-16)
+
+- Fix Flow rules not not affect Typescript files. This solves an issue in the previous release, where enabling both Flow & Typescript in the same project would cause errors in Typescript files.
+- Handful of internal code cleanups.
+
 ## 0.15.0 (2020-12-15)
 
 - Upgrade all dependencies, including:
