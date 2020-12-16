@@ -128,7 +128,8 @@ function makeFiles() {
       rules: {
         ...flowPlugin.configs.recommended.rules,
         'flowtype/array-style-complex-type': ['error', 'verbose'],
-        'flowtype/array-style-simple-type': ['error', 'shorthand']
+        'flowtype/array-style-simple-type': ['error', 'shorthand'],
+        'flowtype/no-types-missing-file-annotation': 'error'
       }
     }
   })
