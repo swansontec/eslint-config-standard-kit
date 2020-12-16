@@ -1,5 +1,13 @@
 # eslint-config-standard-kit
 
+## 0.15.0 (2020-12-15)
+
+- Upgrade all dependencies, including:
+  - ESLint 7
+  - Standard.js 16
+  - typescript-eslint 4
+- Add a React configuration based on eslint-config-standard-react and eslint-plugin-react-hooks.
+
 ## 0.14.6 (2020-12-09)
 
 - web: Fix the missing `lint-staged` dependency in the generated output.
