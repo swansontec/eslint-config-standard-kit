@@ -10,6 +10,7 @@ import { removeProps, sortJson, splitArray, splitObject } from '../utils.js'
 import { filterStyleRules } from './style-rules.js'
 
 const flowConfig = flowPlugin.configs.recommended
+const hooksConfig = reactHooksPlugin.configs.recommended
 
 /**
  * Generate a single eslint config file.
@@ -147,8 +148,7 @@ function makeFiles() {
     comment: 'Typescript language support',
     upstream: 'eslint-config-standard-with-typescript',
     config: {
-      ...removeProps(typescriptConfig, ['extends']),
-      overrides: typescriptConfig.overrides
+      ...removeProps(typescriptConfig, ['extends'])
     }
   })
 
@@ -164,13 +164,13 @@ function makeFiles() {
 
   makeFilePair(out, 'react', {
     comment: 'React support',
-    upstream: 'eslint-config-standard-react',
+    upstream: 'eslint-config-standard-react & eslint-plugin-react-hooks',
     config: {
       ...reactConfig,
-      plugins: [...reactConfig.plugins, 'eslint-plugin-react-hooks'],
+      plugins: [...reactConfig.plugins, ...hooksConfig.plugins],
       rules: {
         ...reactConfig.rules,
-        ...reactHooksPlugin.configs.recommended.rules
+        ...hooksConfig.rules
       }
     }
   })
