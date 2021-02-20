@@ -27,7 +27,22 @@ First, add `eslint-plugin-standard-kit` as one of your project's `devDependencie
 npm install --save-dev eslint-plugin-standard-kit
 ```
 
-Depending on which configurations you enable, you will need to add several other dependencies as well:
+Next, edit your ESLint configuration file to enable your selected rules, as shown in the example below:
+
+```json
+{
+  "extends": [
+    "standard-kit",
+    "standard-kit/jsx",
+    "standard-kit/typescript"
+  ],
+  "parserOptions": {
+    "project": "tsconfig.json"
+  }
+}
+```
+
+Depending on which configurations you enable, you will need to add several other devDependencies as well:
 
 - basic rules:
   - `eslint-plugin-import`
@@ -48,27 +63,6 @@ Depending on which configurations you enable, you will need to add several other
 - prettier:
   - `eslint-plugin-prettier`
   - `prettier`
-
-Finally, edit your ESLint configuration file to enable your selected rules, as shown in the example below:
-
-```json
-{
-  "extends": [
-    "standard-kit",
-    "standard-kit/jsx",
-    "standard-kit/typescript"
-  ],
-  "parserOptions": {
-    "project": "tsconfig.json"
-  }
-}
-```
-
-If you are using JSX or Typescript, you may want to pass the [`--ext`](https://eslint.org/docs/user-guide/command-line-interface#--ext) option to ESlint to tell it about the `.jsx` or `.ts` file extensions:
-
-```js
-eslint --ext .js,.jsx,.ts src/
-```
 
 The TypeScript rules also need to know where your `tsconfig.json` file is located. You can configure this using the `parserOptions.project` setting, as shown in the example above.
 
