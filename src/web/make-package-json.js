@@ -15,7 +15,8 @@ export function makePackageJson(input) {
   }
 
   if (input.flow) {
-    devDependencies['babel-eslint'] = our.devDependencies['babel-eslint']
+    devDependencies['@babel/eslint-parser'] =
+      our.devDependencies['@babel/eslint-parser']
     devDependencies['eslint-plugin-flowtype'] =
       our.devDependencies['eslint-plugin-flowtype']
   }

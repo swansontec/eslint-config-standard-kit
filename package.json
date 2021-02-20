@@ -37,12 +37,15 @@
     "*.js": "eslint"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.17",
+    "@babel/eslint-parser": "^7.12.17",
+    "@babel/plugin-syntax-flow": "^7.12.13",
+    "@babel/plugin-syntax-jsx": "^7.12.13",
     "@rollup/plugin-json": "^4.1.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.8.2",
     "@typescript-eslint/parser": "^4.8.2",
-    "babel-eslint": "^10.1.0",
     "chai": "^4.2.0",
     "disklet": "^0.4.6",
     "eslint": "^7.14.0",

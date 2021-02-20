@@ -53,7 +53,7 @@ Depending on which configurations you enable, you will need to add several other
   - `@typescript-eslint/parser`
   - `@typescript-eslint/eslint-plugin`
 - flow:
-  - `babel-eslint`
+  - `@babel/eslint-parser`
   - `eslint-plugin-flowtype`
 - node:
   - `eslint-plugin-node`

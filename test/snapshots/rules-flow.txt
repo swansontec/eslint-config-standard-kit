@@ -13,7 +13,16 @@ module.exports = {
         "*.js",
         "*.jsx"
       ],
-      "parser": "babel-eslint",
+      "parser": "@babel/eslint-parser",
+      "parserOptions": {
+        "babelOptions": {
+          "plugins": [
+            "@babel/plugin-syntax-flow",
+            "@babel/plugin-syntax-jsx"
+          ]
+        },
+        "requireConfigFile": false
+      },
       "rules": {
         "flowtype/array-style-complex-type": [
           "error",

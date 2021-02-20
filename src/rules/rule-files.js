@@ -130,7 +130,13 @@ function makeFiles() {
       overrides: [
         {
           files: ['*.flow', '*.js', '*.jsx'],
-          parser: flowConfig.parser,
+          parser: '@babel/eslint-parser',
+          parserOptions: {
+            babelOptions: {
+              plugins: ['@babel/plugin-syntax-flow', '@babel/plugin-syntax-jsx']
+            },
+            requireConfigFile: false
+          },
           rules: {
             ...removeProps(flowConfig.rules, [
               'flowtype/no-mixed',
