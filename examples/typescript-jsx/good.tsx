@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 
 interface Props {
   bye?: boolean
@@ -14,4 +14,5 @@ function MyComponent (): React.ReactElement {
   return <InnerComponent bye />
 }
 
-render(<MyComponent />, document.getElementById('body'))
+const root = createRoot(document.getElementById('body')!)
+root.render(<MyComponent />)

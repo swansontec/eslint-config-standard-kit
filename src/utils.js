@@ -37,19 +37,6 @@ export function sortJson(json) {
 }
 
 /**
- * Splits an array in two based on the provided test.
- */
-export function splitArray(array, test) {
-  const out = { no: [], yes: [] }
-  for (let i = 0; i < array.length; ++i) {
-    const item = array[i]
-    if (test(item)) out.yes.push(item)
-    else out.no.push(item)
-  }
-  return out
-}
-
-/**
  * Splits an object in two based on the provided test.
  */
 export function splitObject(object, test) {

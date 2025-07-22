@@ -1,7 +1,7 @@
 [
   {
     "column": 1,
-    "endColumn": 40,
+    "endColumn": 26,
     "endLine": 8,
     "line": 8,
     "message": "Missing return type on function.",
@@ -17,7 +17,7 @@
     "line": 8,
     "message": "'UnusedComponent' is defined but never used.",
     "messageId": "unusedVar",
-    "nodeType": "Identifier",
+    "nodeType": null,
     "ruleId": "@typescript-eslint/no-unused-vars",
     "severity": 2
   },
@@ -30,11 +30,35 @@
     "messageId": "conditionErrorNullableBoolean",
     "nodeType": "MemberExpression",
     "ruleId": "@typescript-eslint/strict-boolean-expressions",
-    "severity": 2
+    "severity": 2,
+    "suggestions": [
+      {
+        "desc": "Explicitly treat nullish value the same as false (`value ?? false`)",
+        "fix": {
+          "range": [
+            166,
+            175
+          ],
+          "text": "(props.bye ?? false)"
+        },
+        "messageId": "conditionFixDefaultFalse"
+      },
+      {
+        "desc": "Change condition to check if true (`value === true`)",
+        "fix": {
+          "range": [
+            166,
+            175
+          ],
+          "text": "(props.bye === true)"
+        },
+        "messageId": "conditionFixCompareTrue"
+      }
+    ]
   },
   {
     "column": 1,
-    "endColumn": 24,
+    "endColumn": 22,
     "endLine": 12,
     "line": 12,
     "message": "Missing return type on function.",

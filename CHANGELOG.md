@@ -1,5 +1,16 @@
 # eslint-config-standard-kit
 
+## Unreleased
+
+- added: New `standardConfig` rule-configuration function.
+- changed: Rename top-level entry-points like `/typescript.js` to `/config/typescript`.
+- changed: Upgrade everything to ESLint 9 flat-config format.
+- changed: Upgrade to the latest upstream rules.
+- changed: Replace eslint-config-standard-with-typescript with a filtered version of eslint-config-love.
+- removed: `/lint` entry-points.
+- removed: Flow support.
+- removed: Configuration website. Use the new `standardConfig` helper function.
+
 ## 0.15.1 (2020-12-16)
 
 - Fix Flow rules not not affect Typescript files. This solves an issue in the previous release, where enabling both Flow & Typescript in the same project would cause errors in Typescript files.

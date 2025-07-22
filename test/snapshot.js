@@ -1,9 +1,12 @@
-import { expect } from 'chai'
+import chai from 'chai'
 import { readFileSync, writeFileSync } from 'fs'
-import { resolve } from 'path'
+import { dirname, resolve } from 'path'
+import { fileURLToPath } from 'url'
 
-import { sortJson } from '../src/utils'
+import { sortJson } from '../src/utils.js'
 
+const { expect } = chai
+const __dirname = dirname(fileURLToPath(import.meta.url))
 const snapshotsDir = resolve(__dirname, 'snapshots')
 
 export function checkJsonSnapshot(name, json) {

@@ -1,11 +1,23 @@
 #!/usr/bin/env node
 
-const { makeNodeDisklet } = require('disklet')
-const { resolve } = require('path')
+import { makeNodeDisklet } from 'disklet'
+import { dirname, resolve } from 'path'
+import { fileURLToPath } from 'url'
 
-const { ruleFiles } = require('esm')(module)('./rule-files.js')
+import { makeRuleFiles } from './rule-files.js'
 
-const disklet = makeNodeDisklet(resolve(__dirname, '../..'))
-for (const filename in ruleFiles) {
-  disklet.setText(filename, ruleFiles[filename])
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+async function main() {
+  const disklet = makeNodeDisklet(resolve(__dirname, '../..'))
+  const ruleFiles = await makeRuleFiles()
+
+  ruleFiles['config/package.json'] = '{ "type": "commonjs" }'
+  ruleFiles['prettier/package.json'] = '{ "type": "commonjs" }'
+
+  for (const filename in ruleFiles) {
+    disklet.setText(filename, ruleFiles[filename])
+  }
 }
+
+main()

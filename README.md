@@ -4,67 +4,80 @@
 
 This package makes it easy to integrate Standard.js with these other tools by breaking its configuration into modular pieces. Just mix & match the bits you need for your particular setup:
 
-- `standard-kit` - Basic Standard.js rules
-- Language dialects:
-  - `standard-kit/jsx` - [JSX](https://reactjs.org/docs/introducing-jsx.html) language support
-  - `standard-kit/typescript` - [TypeScript](https://typescriptlang.org) language support
-- Runtimes:
-  - `standard-kit/node` - [Node.js](https://nodejs.org/) runtime support, including CommonJS features like `require`
-  - `standard-kit/react` - [React](https://reactjs.org) runtime support
-
-If you would like to use [Prettier](https://prettier.io/) to format your source code instead of Standard.js, just prefix the configuration names with `standard-kit/prettier` instead of `standard-kit`, like `standard-kit/prettier/typescript`.
+- TypeScript
+- JSX
+- React
+- Node.js
+- Prettier
+- Simple-import-sort
 
 ## Easy Setup
 
-Use the [configuration web page](https://www.swansontec.com/eslint-config-standard-kit/) to generate your`.eslintrc.json` file and list of dependencies for `package.json`.
-
-## Manual Setup
-
-First, add `eslint-plugin-standard-kit` as one of your project's `devDependencies`:
+First, install ESLint 9 and eslint-plugin-standard-kit:
 
 ```sh
-npm install --save-dev eslint-plugin-standard-kit
+npm install --save-dev eslint eslint-config-standard-kit
 ```
 
-Next, edit your ESLint configuration file to enable your selected rules, as shown in the example below:
+Next, create an `eslint.config.mjs` config file:
 
-```json
-{
-  "extends": [
-    "standard-kit",
-    "standard-kit/jsx",
-    "standard-kit/typescript"
-  ],
-  "parserOptions": {
-    "project": "tsconfig.json"
+```js
+import standardConfig from 'eslint-config-standard-kit'
+
+export default [
+  ...standardConfig({
+    prettier: true,
+    sortImports: true,
+    jsx: true,
+    node: false,
+    react: true,
+    typescript: true
+  }),
+  {
+    // Add your own settings here
   }
-}
+]
 ```
 
-Depending on which configurations you enable, you will need to add several other devDependencies as well:
+The `standardConfig` function takes a collection of flags to enable or disable the rules you need. If your `tsconfig.json` isn't in a normal place, you can also pass a `tsconfigRootDir` option to provide its location.
 
-- basic rules:
-  - `eslint-plugin-import`
-  - `eslint-plugin-promise`
-- jsx:
-  - `eslint-plugin-react`
-- typescript:
-  - `@typescript-eslint/parser`
-  - `@typescript-eslint/eslint-plugin`
-- node:
-  - `eslint-plugin-node`
-- react:
-  - `eslint-plugin-react`
-  - `eslint-plugin-react-hooks`
-- prettier:
-  - `eslint-plugin-prettier`
-  - `prettier`
+If you choose `prettier` or `typescript` support, be sure to `npm install` the corresponding tools in your project.
 
-The TypeScript rules also need to know where your `tsconfig.json` file is located. You can configure this using the `parserOptions.project` setting, as shown in the example above.
+## Configs
+
+If you don't want to use the `standardConfig` function, you can also import individual config objects:
+
+- `eslint-config-standard-kit/config` - Core Standard.js rules
+- `eslint-config-standard-kit/config/jsx` - JSX support
+- `eslint-config-standard-kit/config/node` - Node.js support
+- `eslint-config-standard-kit/config/react` - React support
+- `eslint-config-standard-kit/config/typescript` - TypeScript support
+- `eslint-config-standard-kit/prettier` - Core Standard.js rules + Prettier
+- `eslint-config-standard-kit/prettier/jsx` - JSX support + Prettier
+- `eslint-config-standard-kit/prettier/node` - Node.js support + Prettier
+- `eslint-config-standard-kit/prettier/react` - React support + Prettier
+- `eslint-config-standard-kit/prettier/typescript` - TypeScript support + Prettier
+
+You could use these standalone configs like this:
+
+```js
+import baseConfig from 'eslint-config-standard-kit/config'
+import tsConfig from 'eslint-config-standard-kit/config/typescript'
+
+export default [
+  baseConfig,
+  tsConfig,
+  {
+    // Add your own settings here
+  }
+]
+```
 
 ## Rules
 
-This package auto-generate its configuration files based on the official [eslint-config-standard](https://github.com/standard/eslint-config-standard), [eslint-config-standard-jsx](https://github.com/standard/eslint-config-standard-jsx), and [eslint-config-standard-with-typescript](https://github.com/standard/eslint-config-standard-with-typescript) packages. This means you are getting the exact same rules as the official Standard.js project, just combined & filtered into a more convenient format.
+This package auto-generates its configuration files based on the official [eslint-config-standard](https://github.com/standard/eslint-config-standard), [eslint-config-standard-jsx](https://github.com/standard/eslint-config-standard-jsx), and [eslint-config-standard-react](https://github.com/standard/eslint-config-standard-react) packages. This means you are getting the exact same rules as the official Standard.js project, just combined & filtered into a more convenient format.
+
+The upstream eslint-config-standard-with-typescript package has been renamed to [eslint-config-love](https://github.com/mightyiam/eslint-config-love), and is no longer part of the Standard.js ecosystem. Since there is no longer an official TypeScript solution, eslint-config-standard-kit simply filters eslint-config-love down to be more Standard.js-aligned.
 
 ## Contributing
 

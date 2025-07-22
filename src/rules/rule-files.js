@@ -1,30 +1,196 @@
+import prettierConfig from 'eslint-config-prettier'
 import standardConfig from 'eslint-config-standard'
 import jsxConfig from 'eslint-config-standard-jsx'
 import reactConfig from 'eslint-config-standard-react'
-import typescriptConfig from 'eslint-config-standard-with-typescript'
-import reactHooksPlugin from 'eslint-plugin-react-hooks'
+import globals from 'globals'
 
-import packageJson from '../../package.json'
-import { removeProps, sortJson, splitArray, splitObject } from '../utils.js'
-import { filterStyleRules } from './style-rules.js'
+import { removeProps, sortJson, splitObject } from '../utils.js'
+import { makeTsRules } from './typescript-rules.js'
 
-const hooksConfig = reactHooksPlugin.configs.recommended
+const externals = [
+  { name: 'typescriptParser', path: '@typescript-eslint/parser' },
+  { name: 'typescriptPlugin', path: '@typescript-eslint/eslint-plugin' },
+  { name: 'importPlugin', path: 'eslint-plugin-import' },
+  { name: 'nodePlugin', path: 'eslint-plugin-n' },
+  { name: 'prettierPlugin', path: 'eslint-plugin-prettier' },
+  { name: 'promisePlugin', path: 'eslint-plugin-promise' },
+  { name: 'hooksPlugin', path: 'eslint-plugin-react-hooks' },
+  { name: 'reactPlugin', path: 'eslint-plugin-react' }
+]
+
+/**
+ * Generates all the eslint config files in this package.
+ */
+export async function makeRuleFiles() {
+  const out = {}
+  const splitNodeRules = splitObject(standardConfig.rules, rule =>
+    /^n\//.test(rule)
+  )
+
+  const coreConfig = {
+    name: 'eslint-config-standard-kit',
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'module',
+      globals: {
+        clearInterval: 'readonly',
+        clearTimeout: 'readonly',
+        console: 'readonly',
+        setInterval: 'readonly',
+        setTimeout: 'readonly',
+        ...standardConfig.globals,
+        ...globals.es2021
+      }
+    },
+    plugins: {
+      import: '$importPlugin',
+      promise: '$promisePlugin'
+    },
+    rules: { ...splitNodeRules.no }
+  }
+
+  out['config/index.js'] = makeFile({
+    comment: 'Core rules for Standard.js',
+    upstream: 'eslint-config-standard',
+    config: coreConfig
+  })
+
+  const corePrettierConfig = filterStyleRules(coreConfig)
+  out['prettier/index.js'] = makeFile({
+    comment: 'Core rules for Standard.js + Prettier',
+    upstream: 'eslint-config-standard',
+    config: {
+      ...corePrettierConfig,
+      rules: {
+        ...corePrettierConfig.rules,
+        'prettier/prettier': [
+          'error',
+          {
+            arrowParens: 'avoid',
+            semi: false,
+            singleQuote: true,
+            trailingComma: 'none'
+          }
+        ]
+      },
+      plugins: {
+        ...corePrettierConfig.plugins,
+        prettier: '$prettierPlugin'
+      }
+    }
+  })
+
+  makeFilePair(out, 'node', {
+    comment: 'Node.js support',
+    upstream: 'eslint-config-standard',
+    config: {
+      name: 'eslint-config-standard-kit/node',
+      languageOptions: {
+        globals: globals.node
+      },
+      plugins: {
+        n: '$nodePlugin'
+      },
+      rules: splitNodeRules.yes
+    }
+  })
+
+  makeFilePair(out, 'typescript', {
+    comment: 'Typescript language support',
+    upstream: 'eslint-config-love (edited)',
+    config: {
+      name: 'eslint-config-standard-kit/typescript',
+      files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
+      languageOptions: {
+        parser: '$typescriptParser',
+        parserOptions: { projectService: true }
+      },
+      plugins: {
+        '@typescript-eslint': '$typescriptPlugin'
+      },
+      rules: makeTsRules(coreConfig.rules)
+    }
+  })
+
+  makeFilePair(out, 'jsx', {
+    comment: 'JSX support',
+    upstream: 'eslint-config-standard-jsx',
+    config: {
+      name: 'eslint-config-standard-kit/jsx',
+      languageOptions: {
+        parserOptions: {
+          ecmaFeatures: {
+            jsx: true
+          }
+        }
+      },
+      plugins: {
+        react: '$reactPlugin'
+      },
+      rules: jsxConfig.rules,
+      settings: jsxConfig.settings
+    }
+  })
+
+  makeFilePair(out, 'react', {
+    comment: 'React support',
+    upstream: 'eslint-config-standard-react',
+    config: {
+      name: 'eslint-config-standard-kit/react',
+      languageOptions: {
+        parserOptions: {
+          ecmaFeatures: {
+            jsx: true
+          }
+        }
+      },
+      plugins: {
+        react: '$reactPlugin',
+        'react-hooks': '$hooksPlugin'
+      },
+      rules: reactConfig.rules,
+      settings: reactConfig.settings
+    }
+  })
+
+  return out
+}
 
 /**
  * Generate a single eslint config file.
  */
 function makeFile(info) {
   const { comment, upstream, config } = info
+
+  let imports = ''
+  let ruleString = JSON.stringify(sortJson(config), null, 2)
+
+  for (const { name, path } of externals) {
+    if (!ruleString.includes(`$${name}`)) continue
+    imports += `const ${name} = require('${path}');\n`
+    ruleString = ruleString.replace(`"$${name}"`, name)
+  }
+
   return (
     `// ${comment}\n` +
     '//\n' +
-    `// Auto-generated by ${packageJson.name}\n` +
+    `// Auto-generated by eslint-config-standard-kit\n` +
     `// based on rules from ${upstream}\n` +
     '\n' +
-    '"use strict";\n' +
+    imports +
     '\n' +
-    `module.exports = ${JSON.stringify(sortJson(config), null, 2)};\n`
+    `module.exports = ${ruleString};\n`
   )
+}
+
+/**
+ * Removes style rules from an ESlint config, so it won't fight prettier.
+ */
+function filterStyleRules(config) {
+  return {
+    ...config,
+    rules: removeProps(config.rules, Object.keys(prettierConfig.rules))
+  }
 }
 
 /**
@@ -47,98 +213,3 @@ async function makeFilePair(out, name, info) {
     config: filterStyleRules(config)
   })
 }
-
-/**
- * Generates all the eslint config files in this package.
- */
-function makeFiles() {
-  const out = {}
-  const isNode = rule => /^node/.test(rule)
-  const splitNodeEnv = splitObject(standardConfig.env, isNode)
-  const splitNodePlugins = splitArray(standardConfig.plugins, isNode)
-  const splitNodeRules = splitObject(standardConfig.rules, isNode)
-
-  const coreConfig = {
-    ...standardConfig,
-    env: splitNodeEnv.no,
-    globals: {
-      clearInterval: 'readonly',
-      clearTimeout: 'readonly',
-      console: 'readonly',
-      setInterval: 'readonly',
-      setTimeout: 'readonly',
-      ...standardConfig.globals
-    },
-    plugins: splitNodePlugins.no,
-    rules: splitNodeRules.no
-  }
-  const coreLintConfig = filterStyleRules(coreConfig)
-
-  out['config/index.js'] = makeFile({
-    comment: 'Core rules for Standard.js',
-    upstream: 'eslint-config-standard',
-    config: coreConfig
-  })
-
-  out['prettier/index.js'] = makeFile({
-    comment: 'Core rules for Standard.js + Prettier',
-    upstream: 'eslint-config-standard',
-    config: {
-      ...coreLintConfig,
-      plugins: [...coreLintConfig.plugins, 'prettier'],
-      rules: {
-        ...coreLintConfig.rules,
-        'prettier/prettier': [
-          'error',
-          {
-            arrowParens: 'avoid',
-            semi: false,
-            singleQuote: true,
-            trailingComma: 'none'
-          }
-        ]
-      }
-    }
-  })
-
-  makeFilePair(out, 'jsx', {
-    comment: 'JSX support',
-    upstream: 'eslint-config-standard-jsx',
-    config: jsxConfig
-  })
-
-  makeFilePair(out, 'typescript', {
-    comment: 'Typescript language support',
-    upstream: 'eslint-config-standard-with-typescript',
-    config: {
-      ...removeProps(typescriptConfig, ['extends'])
-    }
-  })
-
-  makeFilePair(out, 'node', {
-    comment: 'Node.js support',
-    upstream: 'eslint-config-standard',
-    config: {
-      env: splitNodeEnv.yes,
-      plugins: splitNodePlugins.yes,
-      rules: splitNodeRules.yes
-    }
-  })
-
-  makeFilePair(out, 'react', {
-    comment: 'React support',
-    upstream: 'eslint-config-standard-react & eslint-plugin-react-hooks',
-    config: {
-      ...reactConfig,
-      plugins: [...reactConfig.plugins, ...hooksConfig.plugins],
-      rules: {
-        ...reactConfig.rules,
-        ...hooksConfig.rules
-      }
-    }
-  })
-
-  return out
-}
-
-export const ruleFiles = makeFiles()
