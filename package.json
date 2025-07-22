@@ -12,7 +12,6 @@
     "/flow.js",
     "/index.js",
     "/jsx.js",
-    "/lint",
     "/node.js",
     "/package.json",
     "/prettier",

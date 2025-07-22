@@ -42,13 +42,6 @@ async function makeFilePair(out, name, info) {
     config
   })
 
-  // Make `lint` version:
-  out[`lint/${name}.js`] = makeFile({
-    comment: `${comment} for Standard.js (without style rules)`,
-    upstream,
-    config: filterStyleRules(config)
-  })
-
   // Make `prettier` version:
   out[`prettier/${name}.js`] = makeFile({
     comment: `${comment} for Standard.js + Prettier`,
@@ -87,12 +80,6 @@ function makeFiles() {
     comment: 'Core rules for Standard.js',
     upstream: 'eslint-config-standard',
     config: coreConfig
-  })
-
-  out['lint/index.js'] = makeFile({
-    comment: 'Core rules for Standard.js (without style rules)',
-    upstream: 'eslint-config-standard',
-    config: coreLintConfig
   })
 
   out['prettier/index.js'] = makeFile({
