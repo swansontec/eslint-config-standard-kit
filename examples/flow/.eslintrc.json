@@ -1,7 +1,0 @@
-{
-  "extends": [
-    "../../index.js",
-    "../../flow.js"
-  ],
-  "root": true
-}

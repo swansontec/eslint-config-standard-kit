@@ -11,10 +11,6 @@ describe('examples', function () {
   const cli = new CLIEngine({ ignore: false })
   const examplesDir = resolve(__dirname, '../examples')
   const examples = [
-    'flow-jsx/bad.js',
-    'flow-jsx/good.js',
-    'flow/bad.js',
-    'flow/good.js',
     'typescript-jsx/bad.tsx',
     'typescript-jsx/good.tsx',
     'typescript/bad.ts',

@@ -14,12 +14,6 @@ export function makePackageJson(input) {
       our.devDependencies['eslint-plugin-react']
   }
 
-  if (input.flow) {
-    devDependencies['babel-eslint'] = our.devDependencies['babel-eslint']
-    devDependencies['eslint-plugin-flowtype'] =
-      our.devDependencies['eslint-plugin-flowtype']
-  }
-
   if (input.typescript) {
     devDependencies['@typescript-eslint/eslint-plugin'] =
       our.devDependencies['@typescript-eslint/eslint-plugin']

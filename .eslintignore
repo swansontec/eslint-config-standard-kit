@@ -2,7 +2,6 @@
 /examples/
 
 # Generated sources:
-/flow.js
 /index.js
 /jsx.js
 /node.js

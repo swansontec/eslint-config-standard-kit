@@ -1,6 +1,6 @@
 # eslint-config-standard-kit
 
-[Standard.js](https://standardjs.com) is a _fantastic_ collection of linter rules, but it can be difficult to integrate with other code-quality tools like Prettier, TypeScript, or Flow.
+[Standard.js](https://standardjs.com) is a _fantastic_ collection of linter rules, but it can be difficult to integrate with other code-quality tools like Prettier, TypeScript, or JSX.
 
 This package makes it easy to integrate Standard.js with these other tools by breaking its configuration into modular pieces. Just mix & match the bits you need for your particular setup:
 
@@ -8,12 +8,11 @@ This package makes it easy to integrate Standard.js with these other tools by br
 - Language dialects:
   - `standard-kit/jsx` - [JSX](https://reactjs.org/docs/introducing-jsx.html) language support
   - `standard-kit/typescript` - [TypeScript](https://typescriptlang.org) language support
-  - `standard-kit/flow` - [Flow](https://flow.org/) language support
 - Runtimes:
   - `standard-kit/node` - [Node.js](https://nodejs.org/) runtime support, including CommonJS features like `require`
   - `standard-kit/react` - [React](https://reactjs.org) runtime support
 
-If you would like to use [Prettier](https://prettier.io/) to format your source code instead of Standard.js, just prefix the configuration names with `standard-kit/prettier` instead of `standard-kit`.
+If you would like to use [Prettier](https://prettier.io/) to format your source code instead of Standard.js, just prefix the configuration names with `standard-kit/prettier` instead of `standard-kit`, like `standard-kit/prettier/typescript`.
 
 ## Easy Setup
 
@@ -52,9 +51,6 @@ Depending on which configurations you enable, you will need to add several other
 - typescript:
   - `@typescript-eslint/parser`
   - `@typescript-eslint/eslint-plugin`
-- flow:
-  - `babel-eslint`
-  - `eslint-plugin-flowtype`
 - node:
   - `eslint-plugin-node`
 - react:
@@ -69,8 +65,6 @@ The TypeScript rules also need to know where your `tsconfig.json` file is locate
 ## Rules
 
 This package auto-generate its configuration files based on the official [eslint-config-standard](https://github.com/standard/eslint-config-standard), [eslint-config-standard-jsx](https://github.com/standard/eslint-config-standard-jsx), and [eslint-config-standard-with-typescript](https://github.com/standard/eslint-config-standard-with-typescript) packages. This means you are getting the exact same rules as the official Standard.js project, just combined & filtered into a more convenient format.
-
-Flow support uses the recommended settings from [eslint-plugin-flowtype](https://github.com/gajus/eslint-plugin-flowtype).
 
 ## Contributing
 

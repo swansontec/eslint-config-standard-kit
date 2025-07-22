@@ -5,7 +5,6 @@ import { makePackageJson } from './make-package-json.js'
 const ids = [
   'jsx',
   'typescript',
-  'flow',
   'node',
   'react',
   'prettier',

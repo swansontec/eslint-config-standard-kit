@@ -13,10 +13,6 @@ export function makeEslintJson(input) {
     eslintJson.extends.push(standardKit + '/jsx')
   }
 
-  if (input.flow) {
-    eslintJson.extends.push(standardKit + '/flow')
-  }
-
   if (input.typescript) {
     eslintJson.extends.push(standardKit + '/typescript')
     eslintJson.parserOptions.project = 'tsconfig.json'

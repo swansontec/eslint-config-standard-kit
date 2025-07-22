@@ -1,9 +1,7 @@
 [
-  "flow.js",
   "index.js",
   "jsx.js",
   "node.js",
-  "prettier/flow.js",
   "prettier/index.js",
   "prettier/jsx.js",
   "prettier/node.js",

@@ -1,7 +1,6 @@
 import { expect } from 'chai'
 import coreBlacklist from 'eslint-config-prettier'
 import typescriptBlacklist from 'eslint-config-prettier/@typescript-eslint'
-import flowBlacklist from 'eslint-config-prettier/flowtype'
 import reactBlacklist from 'eslint-config-prettier/react'
 import standardBlacklist from 'eslint-config-prettier/standard'
 
@@ -11,7 +10,6 @@ import { removeProps } from '../utils.js'
 const prettierBlacklists = [
   coreBlacklist,
   typescriptBlacklist,
-  flowBlacklist,
   reactBlacklist,
   standardBlacklist
 ]
