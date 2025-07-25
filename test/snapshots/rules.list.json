@@ -1,12 +1,12 @@
 [
-  "index.js",
-  "jsx.js",
-  "node.js",
+  "config/index.js",
+  "config/jsx.js",
+  "config/node.js",
+  "config/react.js",
+  "config/typescript.js",
   "prettier/index.js",
   "prettier/jsx.js",
   "prettier/node.js",
   "prettier/react.js",
-  "prettier/typescript.js",
-  "react.js",
-  "typescript.js"
+  "prettier/typescript.js"
 ]

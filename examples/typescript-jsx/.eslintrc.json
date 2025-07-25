@@ -1,8 +1,8 @@
 {
   "extends": [
-    "../../index.js",
-    "../../jsx.js",
-    "../../typescript.js"
+    "../../config/index.js",
+    "../../config/jsx.js",
+    "../../config/typescript.js"
   ],
   "parserOptions": {
     "project": "tsconfig.json"

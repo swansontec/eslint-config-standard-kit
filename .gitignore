@@ -1,11 +1,7 @@
 # Generated sources:
-/index.js
-/jsx.js
-/node.js
+/config/
 /prettier/
 /public/*.js
-/react.js
-/typescript.js
 
 # Package managers:
 node_modules/

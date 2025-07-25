@@ -34,7 +34,7 @@ async function makeFilePair(out, name, info) {
   const { comment, upstream, config } = info
 
   // Make normal version:
-  out[`${name}.js`] = makeFile({
+  out[`config/${name}.js`] = makeFile({
     comment: `${comment} for Standard.js`,
     upstream,
     config
@@ -74,7 +74,7 @@ function makeFiles() {
   }
   const coreLintConfig = filterStyleRules(coreConfig)
 
-  out['index.js'] = makeFile({
+  out['config/index.js'] = makeFile({
     comment: 'Core rules for Standard.js',
     upstream: 'eslint-config-standard',
     config: coreConfig

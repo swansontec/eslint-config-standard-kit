@@ -6,6 +6,18 @@
   "repository": "git://github.com/swansontec/eslint-config-standard-kit.git",
   "license": "MIT",
   "author": "William Swanson",
+  "exports": {
+    ".": "./config/index.js",
+    "./jsx": "./config/jsx.js",
+    "./node": "./config/node.js",
+    "./react": "./config/react.js",
+    "./typescript": "./config/typescript.js",
+    "./prettier": "./prettier/index.js",
+    "./prettier/jsx": "./prettier/jsx.js",
+    "./prettier/node": "./prettier/node.js",
+    "./prettier/react": "./prettier/react.js",
+    "./prettier/typescript": "./prettier/typescript.js"
+  },
   "main": "index.js",
   "files": [
     "/CHANGELOG.md",

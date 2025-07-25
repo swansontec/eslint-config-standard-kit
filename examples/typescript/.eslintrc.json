@@ -1,7 +1,7 @@
 {
   "extends": [
-    "../../index.js",
-    "../../typescript.js"
+    "../../config/index.js",
+    "../../config/typescript.js"
   ],
   "parserOptions": {
     "project": "tsconfig.json"
