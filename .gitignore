@@ -1,13 +1,7 @@
 # Generated sources:
-/flow.js
-/index.js
-/jsx.js
-/lint/
-/node.js
+/config/
 /prettier/
 /public/*.js
-/react.js
-/typescript.js
 
 # Package managers:
 node_modules/

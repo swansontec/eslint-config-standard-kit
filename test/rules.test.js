@@ -1,9 +1,10 @@
 /* global describe, it */
 
-import { ruleFiles } from '../src/rules/rule-files.js'
+import { makeRuleFiles } from '../src/rules/rule-files.js'
 import { checkJsonSnapshot, checkTextSnapshot } from './snapshot.js'
 
-describe('rules', function () {
+describe('rules', async function () {
+  const ruleFiles = await makeRuleFiles()
   const filenames = Object.keys(ruleFiles).sort()
 
   it('matches file list', function () {
