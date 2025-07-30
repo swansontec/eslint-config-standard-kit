@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 1.0.0 (2025-07-30)
+
 - added: New `standardConfig` rule-configuration function.
 - changed: Rename top-level entry-points like `/typescript.js` to `/config/typescript`.
 - changed: Upgrade everything to ESLint 9 flat-config format.
